@@ -1,0 +1,23 @@
+{
+  "$id": "landmark effect",
+  "required": [
+    "value",
+    "effect type"
+  ],
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "effect type": {
+      "type": "string",
+      "enum": [
+        "Double Roll",
+        "Mall Collect",
+        "Doubles Turn",
+        "Reroll"
+      ]
+    }
+  }
+}

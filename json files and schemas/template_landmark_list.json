@@ -1,0 +1,69 @@
+{
+  "type": "array",
+  "items": {
+    "$id": "landmark",
+    "required": [
+      "name",
+      "industry",
+      "card type",
+      "construction cost",
+      "effect",
+      "face"
+    ],
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "industry": {
+        "type": "string",
+        "enum": [
+          "Landmark"
+        ]
+      },
+      "card type": {
+        "type": "string",
+        "enum": [
+          "Major"
+        ]
+      },
+      "construction cost": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "face": {
+        "type": "string",
+        "enum": [
+          "Up",
+          "Down"
+        ]
+      },
+      "effect": {
+        "$id": "landmark effect",
+        "required": [
+          "value",
+          "effect type"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "effect type": {
+            "type": "string",
+            "enum": [
+              "Double Roll",
+              "Mall Collect",
+              "Doubles Turn",
+              "Reroll",
+              "City Hall",
+              "Add To Die",
+              "Build Or Take"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

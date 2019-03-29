@@ -1,0 +1,47 @@
+{
+  "type": "array",
+  "items": {
+    "$id": "players",
+    "required": [
+      "id",
+      "number of dice",
+      "dice rolls",
+      "cash",
+      "assets",
+      "landmarks",
+      "order"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "enum": [
+          "Player 1",
+          "Player 2",
+          "Player 3",
+          "Player 4",
+          "Player 5"
+        ]
+      },
+      "number of dice": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "dice rolls": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      },
+      "cash": {
+        "type": "integer"
+      },
+      "assets": {},
+      "landmarks": {},
+      "order": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4
+      }
+    }
+  }
+}

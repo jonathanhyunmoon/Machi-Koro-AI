@@ -1,0 +1,21 @@
+{
+  "$id": "game setup",
+  "required": [
+    "name",
+    "establishments",
+    "landmarks"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "establishments": {
+      "type": "array",
+      "items": {}
+    },
+    "landmarks": {
+      "type": "array",
+      "items": {}
+    }
+  }
+}

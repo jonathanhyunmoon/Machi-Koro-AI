@@ -1,0 +1,53 @@
+{
+  "$id": "establishment",
+  "required": [
+    "name",
+    "industry",
+    "card type",
+    "construction cost",
+    "activation numbers",
+    "effect"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string",
+      "enum": [
+        "Primary",
+        "Secondary",
+        "Restaurant",
+        "Major"
+      ]
+    },
+    "card type": {
+      "type": "string",
+      "enum": [
+        "Wheat",
+        "Cow",
+        "Gear",
+        "Bread",
+        "Factory",
+        "Fruit",
+        "Cup",
+        "Major",
+        "Boat",
+        "Suitcase"
+      ]
+    },
+    "construction cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "activation numbers": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "effect": {}
+  }
+}

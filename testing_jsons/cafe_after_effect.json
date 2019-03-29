@@ -1,0 +1,113 @@
+{
+  "players": [
+    {
+      "id": "Player 1",
+      "number of dice": 1,
+      "dice rolls": [
+        3
+      ],
+      "cash": 490,
+      "assets": [],
+      "landmarks": [],
+      "order": 0
+    },
+    {
+      "id": "Player 2",
+      "number of dice": 1,
+      "dice rolls": [
+        -1
+      ],
+      "cash": 510,
+      "assets": [
+        {
+          "name": "Cafe",
+          "quantity": 10,
+          "industry": "Restaurant",
+          "card type": "Cup",
+          "construction cost": 2,
+          "activation numbers": [
+            3
+          ],
+          "effect": {
+            "activation time": "Others' Turn",
+            "value": 1,
+            "effect type": "Take Rolled"
+          }
+        }
+      ],
+      "landmarks": [],
+      "order": 1
+    },
+    {
+      "id": "Player 3",
+      "number of dice": 1,
+      "dice rolls": [
+        -1
+      ],
+      "cash": 500,
+      "assets": [],
+      "landmarks": [],
+      "order": 2
+    },
+    {
+      "id": "Player 4",
+      "number of dice": 1,
+      "dice rolls": [
+        -1
+      ],
+      "cash": 500,
+      "assets": [],
+      "landmarks": [],
+      "order": 3
+    }
+  ],
+  "bank": 500,
+  "available cards": [],
+  "current player": 0,
+  "landmark cards": [
+    {
+      "name": "Radio Tower",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 22,
+      "effect": {
+        "value": 1,
+        "effect type": "Reroll"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Amusement Park",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 16,
+      "effect": {
+        "value": 1,
+        "effect type": "Doubles Turn"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Shopping Mall",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 10,
+      "effect": {
+        "value": 1,
+        "effect type": "Mall Collect"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Train Station",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 4,
+      "effect": {
+        "value": 1,
+        "effect type": "Double Roll"
+      },
+      "face": "Down"
+    }
+  ]
+}

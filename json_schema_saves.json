@@ -1,0 +1,413 @@
+{
+  "$id": "game save",
+  "required": [
+    "players",
+    "bank",
+    "available cards",
+    "current player",
+    "landmark cards"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "players": {
+      "type": "array",
+      "items": {
+        "$id": "players",
+        "required": [
+          "id",
+          "number of dice",
+          "dice rolls",
+          "cash",
+          "assets",
+          "landmarks",
+          "order"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "Player 1",
+              "Player 2",
+              "Player 3",
+              "Player 4",
+              "Player 5"
+            ]
+          },
+          "number of dice": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "dice rolls": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "cash": {
+            "type": "integer"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$id": "establishments",
+              "required": [
+                "name",
+                "quantity",
+                "industry",
+                "card type",
+                "construction cost",
+                "activation numbers",
+                "effect"
+              ],
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "industry": {
+                  "type": "string",
+                  "enum": [
+                    "Primary",
+                    "Secondary",
+                    "Restaurant",
+                    "Major"
+                  ]
+                },
+                "card type": {
+                  "type": "string",
+                  "enum": [
+                    "Wheat",
+                    "Cow",
+                    "Gear",
+                    "Bread",
+                    "Factory",
+                    "Fruit",
+                    "Cup",
+                    "Major",
+                    "Boat",
+                    "Suitcase"
+                  ]
+                },
+                "construction cost": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "activation numbers": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "effect": {
+                  "$id": "effect",
+                  "required": [
+                    "activation time",
+                    "value",
+                    "effect type"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "activation time": {
+                      "type": "string",
+                      "enum": [
+                        "Anyone's Turn",
+                        "Player's Turn",
+                        "Others' Turn"
+                      ]
+                    },
+                    "value": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "effect type": {
+                      "type": "string",
+                      "enum": [
+                        "Collect",
+                        "Collect Gear",
+                        "Collect Wheat",
+                        "Collect Cow",
+                        "Take",
+                        "Take Rolled",
+                        "Take All",
+                        "Trade",
+                        "Harbor Collect",
+                        "Harbor Collect Tuna Rolled",
+                        "Flower Collect",
+                        "Collect Cup",
+                        "Harbor Take",
+                        "Collect Cup Bread",
+                        "Tax"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "landmarks": {
+            "type": "array",
+            "items": {
+              "$id": "landmark",
+              "required": [
+                "name",
+                "industry",
+                "card type",
+                "construction cost",
+                "effect",
+                "face"
+              ],
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "industry": {
+                  "type": "string",
+                  "enum": [
+                    "Landmark"
+                  ]
+                },
+                "card type": {
+                  "type": "string",
+                  "enum": [
+                    "Major"
+                  ]
+                },
+                "construction cost": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "face": {
+                  "type": "string",
+                  "enum": [
+                    "Up",
+                    "Down"
+                  ]
+                },
+                "effect": {
+                  "$id": "landmark effect",
+                  "required": [
+                    "value",
+                    "effect type"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "effect type": {
+                      "type": "string",
+                      "enum": [
+                        "Double Roll",
+                        "Mall Collect",
+                        "Doubles Turn",
+                        "Reroll",
+                        "City Hall",
+                        "Add To Die",
+                        "Build Or Take"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          }
+        }
+      }
+    },
+    "bank": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "available cards": {
+      "type": "array",
+      "items": {
+        "$id": "establishments",
+        "required": [
+          "name",
+          "quantity",
+          "industry",
+          "card type",
+          "construction cost",
+          "activation numbers",
+          "effect"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "industry": {
+            "type": "string",
+            "enum": [
+              "Primary",
+              "Secondary",
+              "Restaurant",
+              "Major"
+            ]
+          },
+          "card type": {
+            "type": "string",
+            "enum": [
+              "Wheat",
+              "Cow",
+              "Gear",
+              "Bread",
+              "Factory",
+              "Fruit",
+              "Cup",
+              "Major",
+              "Boat",
+              "Suitcase"
+            ]
+          },
+          "construction cost": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "activation numbers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "effect": {
+            "$id": "effect",
+            "required": [
+              "activation time",
+              "value",
+              "effect type"
+            ],
+            "type": "object",
+            "properties": {
+              "activation time": {
+                "type": "string",
+                "enum": [
+                  "Anyone's Turn",
+                  "Player's Turn",
+                  "Others' Turn"
+                ]
+              },
+              "value": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effect type": {
+                "type": "string",
+                "enum": [
+                  "Collect",
+                  "Collect Gear",
+                  "Collect Wheat",
+                  "Collect Cow",
+                  "Take",
+                  "Take Rolled",
+                  "Take All",
+                  "Trade",
+                  "Harbor Collect",
+                  "Harbor Collect Tuna Rolled",
+                  "Flower Collect",
+                  "Collect Cup",
+                  "Harbor Take",
+                  "Collect Cup Bread",
+                  "Tax"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "current player": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "landmark cards": {
+      "type": "array",
+      "items": {
+        "$id": "landmark",
+        "required": [
+          "name",
+          "industry",
+          "card type",
+          "construction cost",
+          "effect",
+          "face"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "industry": {
+            "type": "string",
+            "enum": [
+              "Landmark"
+            ]
+          },
+          "card type": {
+            "type": "string",
+            "enum": [
+              "Major"
+            ]
+          },
+          "construction cost": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "face": {
+            "type": "string",
+            "enum": [
+              "Up",
+              "Down"
+            ]
+          },
+          "effect": {
+            "$id": "landmark effect",
+            "required": [
+              "value",
+              "effect type"
+            ],
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effect type": {
+                "type": "string",
+                "enum": [
+                  "Double Roll",
+                  "Mall Collect",
+                  "Doubles Turn",
+                  "Reroll",
+                  "City Hall",
+                  "Add To Die",
+                  "Build Or Take"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

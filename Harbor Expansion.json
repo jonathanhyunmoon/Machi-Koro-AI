@@ -1,0 +1,314 @@
+{
+  "name": "Harbor Expansion",
+  "establishments": [
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [
+        1
+      ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 6,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [
+        4
+      ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 6,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [
+        8
+      ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 6,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [
+        12,
+        13,
+        14
+      ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [
+        2,
+        3
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 6,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [
+        6
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 6,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [
+        12,
+        13
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 6,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [
+        1
+      ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 6,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [
+        7
+      ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 6,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [
+        8
+      ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [
+        6
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [
+        6
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [
+        6
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 5,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [
+        7
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 5,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [
+        8,
+        9
+      ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "Airport",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 30,
+      "effect": {
+        "value": 1,
+        "effect type": "Build Or Take"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Harbor",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 2,
+      "effect": {
+        "value": 1,
+        "effect type": "Add To Die"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "City Hall",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 0,
+      "effect": {
+        "value": 1,
+        "effect type": "City Hall"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Train Station",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 4,
+      "effect": {
+        "value": 1,
+        "effect type": "Double Roll"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Shopping Mall",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 10,
+      "effect": {
+        "value": 1,
+        "effect type": "Mall Collect"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Amusement Park",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 16,
+      "effect": {
+        "value": 1,
+        "effect type": "Doubles Turn"
+      },
+      "face": "Down"
+    },
+    {
+      "name": "Radio Tower",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 22,
+      "effect": {
+        "value": 1,
+        "effect type": "Reroll"
+      },
+      "face": "Down"
+    }
+  ]
+}

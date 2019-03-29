@@ -1,0 +1,41 @@
+{
+  "$id": "landmark",
+  "required": [
+    "name",
+    "industry",
+    "card type",
+    "construction cost",
+    "effect",
+    "face"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string",
+      "enum": [
+        "Landmark"
+      ]
+    },
+    "card type": {
+      "type": "string",
+      "enum": [
+        "Major"
+      ]
+    },
+    "construction cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "face": {
+      "type": "string",
+      "enum": [
+        "Up",
+        "Down"
+      ]
+    },
+    "effect": {}
+  }
+}
