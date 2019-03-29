@@ -1,0 +1,27 @@
+{
+  "$id": "game save",
+  "required": [
+    "players",
+    "bank",
+    "available cards",
+    "current player",
+    "landmark cards"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "players": {},
+    "bank": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "available cards": {},
+    "current player": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "landmark cards": {}
+  }
+}

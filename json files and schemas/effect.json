@@ -1,0 +1,36 @@
+{
+  "$id": "effect",
+  "required": [
+    "activation time",
+    "value",
+    "effect type"
+  ],
+  "type": "object",
+  "properties": {
+    "activation time": {
+      "type": "string",
+      "enum": [
+        "Anyone's Turn",
+        "Player's Turn",
+        "Others' Turn"
+      ]
+    },
+    "value": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "effect type": {
+      "type": "string",
+      "enum": [
+        "Collect",
+        "Collect Gear",
+        "Collect Wheat",
+        "Collect Cow",
+        "Take",
+        "Take Rolled",
+        "Take All",
+        "Trade"
+      ]
+    }
+  }
+}

@@ -1,0 +1,2049 @@
+{
+  "players": [
+    {
+      "id": "Player 2",
+      "number of dice": 1,
+      "dice rolls": [ -1 ],
+      "cash": 4,
+      "assets": [
+        {
+          "name": "Bakery",
+          "quantity": 1,
+          "industry": "Secondary",
+          "card type": "Bread",
+          "construction cost": 1,
+          "activation numbers": [ 2, 3 ],
+          "effect": {
+            "activation time": "Player's Turn",
+            "value": 1,
+            "effect type": "Collect"
+          }
+        },
+        {
+          "name": "Wheat Field",
+          "quantity": 1,
+          "industry": "Primary",
+          "card type": "Wheat",
+          "construction cost": 1,
+          "activation numbers": [ 1 ],
+          "effect": {
+            "activation time": "Anyone's Turn",
+            "value": 1,
+            "effect type": "Collect"
+          }
+        }
+      ],
+      "landmarks": [],
+      "order": 1
+    },
+    {
+      "id": "Player 1",
+      "number of dice": 1,
+      "dice rolls": [ 1 ],
+      "cash": 4,
+      "assets": [
+        {
+          "name": "Bakery",
+          "quantity": 1,
+          "industry": "Secondary",
+          "card type": "Bread",
+          "construction cost": 1,
+          "activation numbers": [ 2, 3 ],
+          "effect": {
+            "activation time": "Player's Turn",
+            "value": 1,
+            "effect type": "Collect"
+          }
+        },
+        {
+          "name": "Wheat Field",
+          "quantity": 1,
+          "industry": "Primary",
+          "card type": "Wheat",
+          "construction cost": 1,
+          "activation numbers": [ 1 ],
+          "effect": {
+            "activation time": "Anyone's Turn",
+            "value": 1,
+            "effect type": "Collect"
+          }
+        }
+      ],
+      "landmarks": [],
+      "order": 0
+    }
+  ],
+  "bank": 280,
+  "available cards": [
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Family Restaurant",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 3,
+      "activation numbers": [ 9, 10 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 2,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Cafe",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 2,
+      "activation numbers": [ 3 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take Rolled"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Fruit and Vegetable Market",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Fruit",
+      "construction cost": 2,
+      "activation numbers": [ 11, 12 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Collect Wheat"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Furniture Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 3,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Gear"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Cheese Factory",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect Cow"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Convenience Store",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Apple Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 3,
+      "activation numbers": [ 10 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Mine",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 6,
+      "activation numbers": [ 9 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 5,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Gear",
+      "construction cost": 3,
+      "activation numbers": [ 5 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Ranch",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Cow",
+      "construction cost": 1,
+      "activation numbers": [ 2 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [ 8, 9 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [ 8, 9 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [ 8, 9 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [ 8, 9 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    },
+    {
+      "name": "Tax Office",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 4,
+      "activation numbers": [ 8, 9 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 10,
+        "effect type": "Tax"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Publisher",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 5,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup Bread"
+      }
+    },
+    {
+      "name": "Business Center",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 8,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 0,
+        "effect type": "Trade"
+      }
+    },
+    {
+      "name": "TV Station",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 7,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 5,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Stadium",
+      "quantity": 1,
+      "industry": "Major",
+      "card type": "Major",
+      "construction cost": 6,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 2,
+        "effect type": "Take All"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Hamburger Stand",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Pizza Joint",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 1,
+      "activation numbers": [ 7 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 1,
+        "effect type": "Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Sushi Bar",
+      "quantity": 1,
+      "industry": "Restaurant",
+      "card type": "Cup",
+      "construction cost": 4,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Others' Turn",
+        "value": 3,
+        "effect type": "Harbor Take"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Food Warehouse",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Factory",
+      "construction cost": 2,
+      "activation numbers": [ 12, 13 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect Cup"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Flower Shop",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 6 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Flower Collect"
+      }
+    },
+    {
+      "name": "Bakery",
+      "quantity": 1,
+      "industry": "Secondary",
+      "card type": "Bread",
+      "construction cost": 1,
+      "activation numbers": [ 2, 3 ],
+      "effect": {
+        "activation time": "Player's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Tuna Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 5,
+      "activation numbers": [ 12, 13, 14 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Harbor Collect Tuna Rolled"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Mackarel Boat",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Boat",
+      "construction cost": 2,
+      "activation numbers": [ 8 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 3,
+        "effect type": "Harbor Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Flower Orchard",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 2,
+      "activation numbers": [ 4 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    },
+    {
+      "name": "Wheat Field",
+      "quantity": 1,
+      "industry": "Primary",
+      "card type": "Wheat",
+      "construction cost": 1,
+      "activation numbers": [ 1 ],
+      "effect": {
+        "activation time": "Anyone's Turn",
+        "value": 1,
+        "effect type": "Collect"
+      }
+    }
+  ],
+  "current player": 0,
+  "landmark cards": [
+    {
+      "name": "Airport",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 30,
+      "effect": { "value": 1, "effect type": "Build Or Take" },
+      "face": "Down"
+    },
+    {
+      "name": "Harbor",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 2,
+      "effect": { "value": 1, "effect type": "Add To Die" },
+      "face": "Down"
+    },
+    {
+      "name": "City Hall",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 0,
+      "effect": { "value": 1, "effect type": "City Hall" },
+      "face": "Down"
+    },
+    {
+      "name": "Radio Tower",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 22,
+      "effect": { "value": 1, "effect type": "Reroll" },
+      "face": "Down"
+    },
+    {
+      "name": "Amusement Park",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 16,
+      "effect": { "value": 1, "effect type": "Doubles Turn" },
+      "face": "Down"
+    },
+    {
+      "name": "Shopping Mall",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 10,
+      "effect": { "value": 1, "effect type": "Mall Collect" },
+      "face": "Down"
+    },
+    {
+      "name": "Train Station",
+      "industry": "Landmark",
+      "card type": "Major",
+      "construction cost": 4,
+      "effect": { "value": 1, "effect type": "Double Roll" },
+      "face": "Down"
+    }
+  ]
+}

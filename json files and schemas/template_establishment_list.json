@@ -1,0 +1,103 @@
+{
+  "type": "array",
+  "items": {
+    "$id": "establishments",
+    "required": [
+      "name",
+      "quantity",
+      "industry",
+      "card type",
+      "construction cost",
+      "activation numbers",
+      "effect"
+    ],
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "quantity": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "industry": {
+        "type": "string",
+        "enum": [
+          "Primary",
+          "Secondary",
+          "Restaurant",
+          "Major"
+        ]
+      },
+      "card type": {
+        "type": "string",
+        "enum": [
+          "Wheat",
+          "Cow",
+          "Gear",
+          "Bread",
+          "Factory",
+          "Fruit",
+          "Cup",
+          "Major",
+          "Boat",
+          "Suitcase"
+        ]
+      },
+      "construction cost": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "activation numbers": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "effect": {
+        "$id": "effect",
+        "required": [
+          "activation time",
+          "value",
+          "effect type"
+        ],
+        "type": "object",
+        "properties": {
+          "activation time": {
+            "type": "string",
+            "enum": [
+              "Anyone's Turn",
+              "Player's Turn",
+              "Others' Turn"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "effect type": {
+            "type": "string",
+            "enum": [
+              "Collect",
+              "Collect Gear",
+              "Collect Wheat",
+              "Collect Cow",
+              "Take",
+              "Take Rolled",
+              "Take All",
+              "Trade",
+              "Harbor Collect",
+              "Harbor Collect Tuna Rolled",
+              "Flower Collect",
+              "Collect Cup",
+              "Harbor Take",
+              "Collect Cup Bread",
+              "Tax"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
