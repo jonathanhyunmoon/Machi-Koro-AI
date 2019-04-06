@@ -20,6 +20,7 @@ public class Player {
 	private LinkedList <Establishment> assets;
 	private LinkedList <Landmark> landmarks;
 	private int order;
+	
 	public Player(String i, int nd, LinkedList <Integer> dr, int c, LinkedList <Establishment> a, 
 			LinkedList <Landmark> l, int o) {
 		id = i;
@@ -29,5 +30,26 @@ public class Player {
 		assets = a;
 		landmarks = l;
 		order = o;
+	}
+	public String get_id() {
+		return id;
+	}
+	public int get_num_dice() {
+		return num_dice;
+	}
+	public LinkedList <Integer> get_dice_rolls(){
+		return dice_rolls;
+	}
+	public int get_cash() {
+		return cash;
+	}
+	public LinkedList <Establishment> get_assets(){
+		return assets;
+	}
+	public LinkedList <Landmark> get_landmarks(){
+		return landmarks;
+	}
+	public int get_order() {
+		return order;
 	}
 }

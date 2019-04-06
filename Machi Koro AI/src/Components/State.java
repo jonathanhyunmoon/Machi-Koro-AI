@@ -34,4 +34,19 @@ public class State {
 		
 		return temp;
 	}
+	public LinkedList <Player> get_players(){
+		return players;
+	}
+	public int get_bank() {
+		return bank;
+	} 
+	public LinkedList <Establishment> get_available_cards(){
+		return available_cards;
+	}
+	public LinkedList <Landmark> get_landmark_cards(){
+		return landmark_cards;
+	}
+	public int get_current_player() {
+		return current_player;
+	}
 }

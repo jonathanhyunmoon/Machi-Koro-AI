@@ -104,7 +104,7 @@ public class Parse_JSON {
         	activation_numbers.add(toIntExact((long) itr.next()));
         }
         JSONObject est_effect_obj = (JSONObject) e.get("effect");
-        Effect est_effect = parse_est_effect(est_effect_obj);
+        Est_Effect est_effect = parse_est_effect(est_effect_obj);
         Establishment est;
         try{
         	est = new Establishment(name, industry, card_type, construction_cost, activation_numbers, est_effect);
@@ -137,7 +137,7 @@ public class Parse_JSON {
 		String card_type = (String) e.get("card type");
 		int construction_cost = toIntExact((long) e.get("construction cost"));
 		JSONObject land_effect_obj = (JSONObject) e.get("effect");
-        Effect land_effect = parse_land_effect(land_effect_obj);
+        Land_Effect land_effect = parse_land_effect(land_effect_obj);
         String face = (String) e.get("face");
         Landmark land;
         try {

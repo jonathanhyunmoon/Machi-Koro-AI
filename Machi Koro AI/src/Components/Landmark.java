@@ -24,9 +24,9 @@ public class Landmark {
 	private industry industry;
 	private card_type cardType;
 	private int constructionCost;
-	private Effect effect;
+	private Land_Effect effect;
 	private face face;
-	public Landmark(String n, String i, String ct, int cc, Effect e, String f) throws Exception {
+	public Landmark(String n, String i, String ct, int cc, Land_Effect e, String f) throws Exception {
 		try {
 		name = n;
 		industry = str_to_industry(i);
@@ -62,5 +62,23 @@ public class Landmark {
 			default: throw new Exception ("\n" + s + 
 					" is not a valid string representation of a face.");
 		}
+	}
+	public String get_name() {
+		return name;
+	}
+	public String get_industry() {
+		return industry.toString();
+	}
+	public String get_cardType() {
+		return cardType.toString();
+	}
+	public int get_constructionCost() {
+		return constructionCost;
+	}
+	public Land_Effect get_effect() {
+		return effect;
+	}
+	public String get_face() { 
+		return face.toString();
 	}
 }

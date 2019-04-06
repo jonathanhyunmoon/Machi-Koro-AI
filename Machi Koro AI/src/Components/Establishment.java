@@ -24,14 +24,14 @@ public class Establishment  {
 	private card_type cardType;
 	private int constructionCost;
 	private LinkedList <Integer> activation_numbers;
-	private Effect effect;
+	private Est_Effect effect;
 
-	public Establishment(String n, String i, String ct, int cc, LinkedList <Integer> an, Effect e) throws Exception {
+	public Establishment(String n, String i, String ct, int cc, LinkedList <Integer> an, Est_Effect e) throws Exception {
 		try {
 			name = n;
 			industry = str_to_industry(i);
 			cardType = str_to_card_type(ct);
-			int constructionCost = cc;
+			constructionCost = cc;
 			activation_numbers = an;
 			effect = e;
 		}
@@ -46,7 +46,7 @@ public class Establishment  {
 		case "Wheat": return card_type.Wheat;
 		case "Cow": return card_type.Cow;
 		case "Gear": return card_type.Gear;
-		case "Bread": return card_type.Major;
+		case "Bread": return card_type.Bread;
 		case "Factory": return card_type.Factory;
 		case "Fruit": return card_type.Fruit;
 		case "Cup": return card_type.Cup;
@@ -66,6 +66,24 @@ public class Establishment  {
 		default: throw new Exception ("\n" + s + 
 				" is not a valid string representation of an industry.");
 		}
+	}
+	public String get_name() {
+		return name;
+	}
+	public String get_industry(){
+		return industry.toString();
+	}
+	public String get_cardType(){
+		return cardType.toString();
+	}
+	public int get_constructionCost(){
+		return constructionCost;
+	}
+	public LinkedList <Integer> get_activation_numbers(){
+		return activation_numbers;
+	}
+	public Est_Effect get_effect() {
+		return effect;
 	}
 
 }

@@ -42,5 +42,21 @@ public class Land_Effect extends Effect {
 			
 		}
 	}
+	public String effect_type_str (effect_type et) throws Exception {
+		switch (et) {
+			case DoubleRoll: return "Double Roll";
+			case MallCollect: return "Mall Collect";
+			case DoublesTurn: return "Doubles Turn";
+			case Reroll: return "Reroll";
+			case CityHall: return "City Hall";
+			case AddToDie: return "Add To Die";
+			case BuildOrTake: return "Build Or Take";
+			default: throw new Exception ("\n" + et + 
+					" is not recognized effect_type.");
+		}
+	}
+	public String get_effect_type() throws Exception {
+		return effect_type_str(effectType);
+	}
 	
 }
