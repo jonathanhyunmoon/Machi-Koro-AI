@@ -52,4 +52,17 @@ public class Player {
 	public int get_order() {
 		return order;
 	}
+	
+	public void purchase_assets (Establishment est) {
+		assets.add(est);
+		int const_cost = est.get_constructionCost();
+		cash = cash - const_cost; 
+	}
+	
+	public void purchase_landmarks (Landmark lm) {
+		landmarks.add(lm);
+		int const_cost = lm.get_constructionCost();
+		cash = cash - const_cost;
+	}
+	
 }

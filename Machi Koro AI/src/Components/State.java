@@ -46,7 +46,36 @@ public class State {
 	public LinkedList <Landmark> get_landmark_cards(){
 		return landmark_cards;
 	}
-	public int get_current_player() {
+	public int get_current_player_int() {
 		return current_player;
 	}
+	public Player get_current_player() {
+		return players.get(current_player);
+	}
+	
+	public void purchase_establishment (Establishment est) {
+		available_cards.remove(est);
+		int const_cost = est.get_constructionCost();
+		bank = bank + const_cost;
+		
+		// updates current player's assets after buying establishment est
+		Player new_player = get_current_player();
+		new_player.purchase_assets(est);
+		players.remove(current_player);
+		players.add(current_player, new_player);
+	}
+	
+	public void purchase_landmark (Landmark lm) {
+		landmark_cards.remove(lm);
+		int const_cost = lm.get_constructionCost();
+		bank = bank + const_cost;
+		
+		// updates current player's assets after buying landmark lm
+		Player new_player = get_current_player();
+		new_player.purchase_landmarks(lm);
+		players.remove(current_player);
+		players.add(current_player, new_player);
+	}
+	
+	
 }
