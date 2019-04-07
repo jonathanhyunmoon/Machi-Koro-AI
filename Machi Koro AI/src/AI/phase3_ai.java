@@ -87,7 +87,6 @@ public class phase3_ai {
 	}
 	
 	/* returns a LinkedList of establishments with only unique elements
-	 * 
 	 */
 	public LinkedList<Establishment> uniqueEst(LinkedList<Establishment> est) {
 		int size = est.size();
