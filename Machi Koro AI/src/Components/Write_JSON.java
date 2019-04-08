@@ -12,10 +12,11 @@ public class Write_JSON {
 	public void state_to_json(State st, String filename) throws Exception {
 		JSONObject jo = new JSONObject(); 
 		JSONArray players_arr =  players_to_json(st.get_players());
+		jo.put("control", 1);
 		jo.put("players", players_arr);
 		jo.put("bank", st.get_bank());
 		jo.put("available cards", est_list_to_json(st.get_available_cards()));
-		jo.put("current player", st.get_current_player());
+		jo.put("current player", st.get_current_player_int());
 		jo.put("landmark cards", land_list_to_json(st.get_landmark_cards()));
 		
 		PrintWriter pw = new PrintWriter(filename + ".json"); 

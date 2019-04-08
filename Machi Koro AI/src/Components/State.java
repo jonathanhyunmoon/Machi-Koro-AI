@@ -50,7 +50,11 @@ public class State {
 		return current_player;
 	}
 	public Player get_current_player() {
-		return players.get(current_player);
+		for (Player p: players) {
+			if (p.get_order() == current_player)
+				return p;
+		}
+		return null;
 	}
 	
 	public void purchase_establishment (Establishment est) {
@@ -61,20 +65,26 @@ public class State {
 		// updates current player's assets after buying establishment est
 		Player new_player = get_current_player();
 		new_player.purchase_assets(est);
-		players.remove(current_player);
-		players.add(current_player, new_player);
+		remove_current_player();
+		players.add(new_player);
 	}
 	
 	public void purchase_landmark (Landmark lm) {
-		landmark_cards.remove(lm);
 		int const_cost = lm.get_constructionCost();
 		bank = bank + const_cost;
 		
 		// updates current player's assets after buying landmark lm
 		Player new_player = get_current_player();
 		new_player.purchase_landmarks(lm);
-		players.remove(current_player);
-		players.add(current_player, new_player);
+		remove_current_player();
+		players.add( new_player);
+	}
+	
+	public void remove_current_player() {
+		for(int i = 0; i < players.size(); i++) {
+			if (players.get(i).get_order() == current_player)
+				players.remove(i);
+		}
 	}
 	
 	

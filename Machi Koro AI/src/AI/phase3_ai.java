@@ -12,7 +12,7 @@ public class phase3_ai {
 	 * coins are owned to purchase a landmark, then it chooses the highest price
 	 * establishment.
 	 */
-	public State make_decision(State origst) {
+	public static State make_decision(State origst) {
 		Player player = origst.get_current_player();
 		
 		// assuming not all landmarks are owned, ie LandOptions is not empty.
@@ -53,7 +53,7 @@ public class phase3_ai {
 	/* returns a LinkedList of landmarks not owned and purchasable
 	 * by player p
 	 */
-	public LinkedList<Landmark> landmarksUnownedPurchasable(State st, Player p) {
+	public static LinkedList<Landmark> landmarksUnownedPurchasable(State st, Player p) {
 		LinkedList<Landmark> landsnotowned = new LinkedList<Landmark>();
 		LinkedList<Landmark> landsowned = p.get_landmarks();
 		LinkedList<Landmark> alllands = st.get_landmark_cards();
@@ -73,7 +73,7 @@ public class phase3_ai {
 	 * by player p
 	 * maybe dont add to list 2 dice establishments if train station unowned?
 	 */
-	public LinkedList<Establishment> estOpsPurchasable(State st, Player p) {
+	public static LinkedList<Establishment> estOpsPurchasable(State st, Player p) {
 		LinkedList<Establishment> estOps = new LinkedList<Establishment>();
 		LinkedList<Establishment> allest = st.get_available_cards();
 		int cash = p.get_cash();
@@ -89,7 +89,7 @@ public class phase3_ai {
 	/* returns a LinkedList of establishments with only unique elements
 	 * 
 	 */
-	public LinkedList<Establishment> uniqueEst(LinkedList<Establishment> est) {
+	public static LinkedList<Establishment> uniqueEst(LinkedList<Establishment> est) {
 		int size = est.size();
 		LinkedList<Establishment> uniEst = new LinkedList<Establishment>();
 		for (int i = 0; i < size; i++) {
@@ -102,7 +102,7 @@ public class phase3_ai {
 	/* given a LinkedList of establishments, returns a LinkedList
 	 * with only the highest price establishment(s).
 	 */
-	public LinkedList<Establishment> maxEsts(LinkedList<Establishment> est) {
+	public static LinkedList<Establishment> maxEsts(LinkedList<Establishment> est) {
 		int size = est.size();
 		LinkedList<Establishment> maxEsts = new LinkedList<Establishment>();
 		int max = 0;
