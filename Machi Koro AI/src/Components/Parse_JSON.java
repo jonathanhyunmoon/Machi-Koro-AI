@@ -2,6 +2,7 @@ package Components;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.*;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map; 
@@ -13,8 +14,18 @@ import org.json.simple.parser.*;
 
 public class Parse_JSON {
 	
-	public Parse_JSON() {
-		
+	public boolean is_blocked(String filename) throws Exception {
+		try {
+		JSONObject jo = (JSONObject)(new JSONParser().parse(new FileReader(filename+".json"))); 
+		int control = toIntExact((long) jo.get("control"));
+		if (control==0) {
+			return false;
+		}
+		return true;
+		}
+		catch (Exception e) {
+			return true;
+		}
 	}
 	
 	public State parse_state(String filename) throws Exception {
