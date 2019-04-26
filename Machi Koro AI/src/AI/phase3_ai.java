@@ -17,7 +17,6 @@ public class phase3_ai {
 		
 		// assuming not all landmarks are owned, ie LandOptions is not empty.
 		// this would mean the player won
-		// @jonathan is win condition tested outside of phase 3?
 		LinkedList<Landmark> LandOptions = landmarksUnownedPurchasable(origst,player);
 		int LandOpsSize = LandOptions.size();
 
@@ -100,6 +99,8 @@ public class phase3_ai {
 	
 	/* given a LinkedList of establishments, returns a LinkedList
 	 * with only the highest price establishment(s).
+	 * If multiple establishments have the same highest price, 
+	 * they are all returned.
 	 */
 	public static LinkedList<Establishment> maxEsts(LinkedList<Establishment> est) {
 		int size = est.size();
@@ -120,5 +121,6 @@ public class phase3_ai {
 		return maxEsts;
 	}
 
+	
 	
 }

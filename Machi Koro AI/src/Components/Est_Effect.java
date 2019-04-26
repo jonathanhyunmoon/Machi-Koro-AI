@@ -11,8 +11,8 @@ public class Est_Effect extends Effect{
 		Anyones_Turn, Players_Turn, Others_Turn
 	}
 	enum effect_type{
-		/* collect amount given by value from the bank */
-		Collect,
+		
+		Collect, /* collect amount given by value from the bank */
 		CollectGear, /* collect from the bank value times the number 
 		                   of gear cards one has */
 		CollectWheat, /* collect from the bank value times the 
