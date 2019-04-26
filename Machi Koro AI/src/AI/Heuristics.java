@@ -18,8 +18,9 @@ public class Heuristics {
 	public static int valueOneD(State s, Player p, Establishment c) {
 		LinkedList<Integer> actnums = c.get_activation_numbers();
 		
-		if (c.get_industry() == "Primary") {
-			int expval = expVal(actnums,c.)
+		if (c.get_industry() == "Primary") { // blue cards
+			int income = c.get_effect().get_value(); 
+			float expval = expVal(actnums,income,p.get_num_dice());
 		}
 		
 		return 0;
