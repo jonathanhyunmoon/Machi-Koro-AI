@@ -65,4 +65,18 @@ public class Player {
 		cash = cash - const_cost;
 	}
 	
+	/*
+	 * Returns the number of establishments cardname this player has.
+	 * Put here instead of in heuristics as it seemed like something you'd ask a person:
+	 * "how many furniture factories you have? very big multiplier"
+	 * Time complexity: O(n), n is number of establishments player owns
+	 */
+	public int num_card(String cardname) {
+		int sum = 0;
+		for (Establishment e : assets) {
+			if (e.get_name() == cardname) sum++;
+		}
+		return sum;
+	}
+	
 }

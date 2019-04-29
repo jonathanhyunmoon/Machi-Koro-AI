@@ -44,7 +44,7 @@ public class phase3_ai {
 		
 		Establishment bestest = maxOps.get(index);
 		
-		origst.purchase_establishment (bestest);
+		origst.purchase_establishment(bestest);
 		return origst;
 		
 	}
