@@ -4,6 +4,12 @@ import java.util.HashMap;
 
 import Components.*;
 
+/*
+ * When deciding what cards to purchase, use valueAvg.
+ * However when deciding how many dice to roll (and possibly other non-purchase
+ * moves) the multiplier does not take effect so just use baseval (i think),
+ * summing all the values for one dice vs two.
+ */
 public class Heuristics {
 	
 	public static int valueOneD(State s, Player p, Landmark c) {
@@ -12,39 +18,59 @@ public class Heuristics {
 	}
 	
 	/*
+	 * For one die:
 	 * Returns the "dynamic" value of a card, based on the expected value of the
 	 * profit, as well as any "multiplying" cards Player p may own.
 	 * Value does not depend on p's bank, only on expected value based on p's
 	 * cards (multipliers and train station).
 	 * Lowest possible value is 0, ie buying a card cannot hurt you.
+	 * Use when evaluating a possible purchase, not for when the card is owned
+	 * The base val (1 dice) is added to the multipliers owned, giving dynamic val
 	 */
 	public static float valueOneD(State s, Player p, Establishment c) {
 		// possible optimization: manually enter each probability
 		// may not matter since baseVal is O(1)
+		
+		boolean harborowned = containsNameL(p.get_landmarks(),"Harbor");
+		String cname = c.get_name();
+		boolean harbortype = (cname == "Sushi Bar" || cname == "Mackarel Boat" || cname == "Tuna Boat");
+		if (!harborowned && harbortype) return 0;
+		
 		LinkedList<Integer> actnums = c.get_activation_numbers();
 		String cind = c.get_industry();
-		if (cind == "Primary") { // blue cards. value does not change with # players
-			boolean harborowned = containsNameL(p.get_landmarks(),"Harbor");
-			String cname = c.get_name();
-			boolean harbortype = (cname == "Sushi Bar" || cname == "Macakrel Boat" || cname == "Tuna Boat");
-			if (!harborowned && harbortype) return 0;
 			
+		if (cind == "Primary") { // blue cards. value does not change with # players			
 			int income = c.get_effect().get_value(); 
-			float baseVal = baseVal(actnums,income,p.get_num_dice());
+			float baseVal = baseVal(actnums,income,1);
 			
 			int mult = 0;
-			switch (c.get_name()) {
-			case "Mine":
-				mult = p.num_card("Furniture Factory");
-				return baseVal + mult*((float)5/36)*3; // use 5/36 instead of baseval to avoid unnecessary calls
+			switch (cname) { // this may be a bad way of implementing
 			case "Forest":
 				mult = p.num_card("Furniture Factory");
-				return baseVal + mult*((float)5/36)*3;
+				return baseVal + mult*((float)5/36)*3; // use 5/36 instead of baseval to avoid unnecessary calls
+			case "Wheat Field":
+				mult = p.num_card("Fruit and Vegetable Market");
+				return baseVal + mult*((float)3/36)*2;
+			case "Flower Orchard":
+				mult = p.num_card("Fruit and Vegetable Market");
+				return baseVal + mult*((float)3/36)*2;
+			case "Ranch":
+				mult = p.num_card("Cheese Factory");
+				return baseVal + mult*((float)6/36)*3;
+			default:
+				return 0;
 			
 			}
 			
-		} else if (cind == "Secondary") {
-			
+		} else if (cind == "Secondary") { // green cards, only breads
+			int nplayers = s.get_players().size();
+			switch (cname) {
+			case "Bakery":
+			case "Convenience Store":
+			case "Flower Shop":
+			default:
+				return 0;
+			}
 		}
 		
 		return (float)0.0;
