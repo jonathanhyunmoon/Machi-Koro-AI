@@ -28,24 +28,56 @@ public class Heuristics {
 	 * The base val (1 dice) is added to the multipliers owned, giving dynamic val
 	 */
 	public static float valueOneD(State s, Player p, Establishment c) {
+		int num_players = s.get_players().size();
+		
 		// possible optimization: manually enter each probability
 		// may not matter since baseVal is O(1)
 		
 		boolean harborowned = containsNameL(p.get_landmarks(),"Harbor");
 		String cname = c.get_name();
-		boolean harbortype = (cname == "Sushi Bar" || cname == "Mackarel Boat" || cname == "Tuna Boat");
+		boolean harbortype = (cname == "Sushi Bar");
 		if (!harborowned && harbortype) return 0;
 		
 		LinkedList<Integer> actnums = c.get_activation_numbers();
 		String cind = c.get_industry();
 			
+		int income;
+		float baseVal; 
 		if (cind == "Primary") { // blue cards. value does not change with # players			
-			int income = c.get_effect().get_value(); 
-			float baseVal = baseVal(actnums,income,1);
-			
-			int mult = 0;
-			switch (cname) { // this may be a bad way of implementing
-			case "Forest":
+			income = c.get_effect().get_value(); 
+			baseVal = baseVal(actnums,income,1);
+			return baseVal * 1; 
+		} else if (cind == "Secondary") { // green 
+			income = c.get_effect().get_value();
+			baseVal = baseVal(actnums, income, 1);
+			return baseVal * 1/ (num_players);
+		} else if (cind == "Restaurant") {
+			income = c.get_effect().get_value();
+			baseVal = baseVal(actnums, income, 1);
+			return baseVal * (num_players-1) / num_players; 
+		} else {
+			 income = c.get_effect().get_value(); 
+			 switch (cname) {
+				 case "Stadium":
+					 income = income * num_players;
+				 case "Business Center": 
+					 income = 
+			 }
+			 baseVal = baseVal (actnums, income, 1); 
+			 
+			 // purple card implementation 
+		}
+	}
+	
+	
+	
+	
+		
+				
+				
+				
+				
+				
 				mult = p.num_card("Furniture Factory");
 				return baseVal + mult*((float)5/36)*3; // use 5/36 instead of baseval to avoid unnecessary calls
 			case "Wheat Field":
@@ -101,6 +133,8 @@ public class Heuristics {
 	/*
 	 * Returns the "non-dynamic" expected value of a linkedlist of
 	 * activation numbers. Accounts for number of dice.
+	 * 
+	 * ex: probability of rolling a 3 to activate that card * value of that card
 	 */
 	public static float baseVal(LinkedList<Integer> actnums, int income, int numdice) {
 		if (numdice == 1) { // one die
