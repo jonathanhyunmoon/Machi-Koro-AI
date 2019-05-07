@@ -156,25 +156,6 @@ public class AIhelpers {
 		}
 		return maxEsts;
 	}
-
-	/*
-	 * Updates the current player's cash with an addition of the total sum of the expected values of the cards it currently holds
-	 */
-	public void updateCash(State st, Player p) {
-		float sum = (float) 0; 
-		for (Establishment e: p.get_assets()) {
-			sum += Heuristics.estVal(st, p, e);
-		}
-		for (Landmark l: p.get_landmarks()) {
-			sum+= Heuristics.landmark_values(st, p, l); 
-		}
-		
-		p.add_cash((int)sum);
-		
-	}
-
-
-
 }
 
 
