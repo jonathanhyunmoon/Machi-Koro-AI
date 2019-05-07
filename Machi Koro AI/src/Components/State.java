@@ -1,6 +1,8 @@
 package Components;
 import java.util.*;
 
+import AI.Heuristics;
+
 public class State {
 	/*
 	 * 	type t = {
@@ -126,6 +128,7 @@ public class State {
 		s.current_player %= (s.get_players().size());
 		return s;
 	}
+	
 }
 
 

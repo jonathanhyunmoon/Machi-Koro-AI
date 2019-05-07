@@ -14,7 +14,7 @@ public class Heuristics {
 
 	public static float valueOneD(State s, Player p, Landmark c) {
 		return (float)0.0;
-		
+
 	}
 
 	/*
@@ -185,10 +185,16 @@ public class Heuristics {
 		return (float)0.0; 
 	}
 
-	public static float valueAvg(State s, Player p, Establishment e) {
-		return (valueOneD(s,p,e) + valueTwoD(s, p, e))/2; 
+	/*
+	 * Returns the expected value of establishment e for player p in state s.s
+	 */
+	public static float estVal(State s, Player p, Establishment e) {
+		boolean has_trainst = p.has_TrainSt();
+		if (has_trainst) return (valueOneD(s,p,e) + valueTwoD(s, p, e))/2; 
+		else return valueOneD(s,p,e);
 	}
 
+	
 	/*
 	 * Returns the establishment that has the highest reward, calculated by the valueOneD and value TwoD function, 
 	 * for player p in State s.
