@@ -121,6 +121,11 @@ public class State {
 		return count;
 	}
 
+	public State nextTurn(State s) {
+		s.current_player++;
+		s.current_player %= (s.get_players().size());
+		return s;
+	}
 }
 
 

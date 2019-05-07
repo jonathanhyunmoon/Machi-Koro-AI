@@ -85,5 +85,4 @@ public class Establishment  {
 	public Est_Effect get_effect() {
 		return effect;
 	}
-
 }
