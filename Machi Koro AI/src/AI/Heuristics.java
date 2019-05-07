@@ -12,9 +12,10 @@ import Components.*;
  */
 public class Heuristics {
 
-	public static float valueOneD(State s, Player p, Landmark c) {
-		return (float)0.0;
 
+	public static double valueOneD(State s, Player p, Landmark c) {
+		return (double)0.0;
+		
 	}
 
 	/*
@@ -25,7 +26,7 @@ public class Heuristics {
 	 * Use when evaluating a possible purchase, not for when the card is owned.
 	 * 
 	 */
-	public static float valueOneD(State s, Player p, Establishment c) {
+	public static double valueOneD(State s, Player p, Establishment c) {
 		int num_players = s.get_players().size();
 
 		boolean harborowned = p.has_Harbor();
@@ -39,12 +40,12 @@ public class Heuristics {
 
 
 		int income = c.get_effect().get_value();  // how many coins from a card
-		float baseVal; 
+		double baseVal; 
 		if (cind == "Primary") { // blue cards: value does not change with # players	
 			baseVal = baseVal(actnums, income, 1);
 			if (cname == "Flower Orchard") {
 				int num_flowershop = p.num_card("Flower Shop");
-				baseVal = baseVal + (num_flowershop * (float)1/6 * 1); 
+				baseVal = baseVal + (num_flowershop * (double)1/6 * 1); 
 			}
 			return baseVal * 1; 
 		} else if (cind == "Secondary") { // green cards: value * fraction of your turn
@@ -80,7 +81,7 @@ public class Heuristics {
 	 * Use when evaluating a possible purchase, not for when the card is owned.
 	 * 
 	 */
-	public static float valueTwoD(State s, Player p, Establishment c) {
+	public static double valueTwoD(State s, Player p, Establishment c) {
 
 		LinkedList<Integer> actnums = c.get_activation_numbers();
 		int num_players = s.get_players().size();
@@ -93,30 +94,30 @@ public class Heuristics {
 
 		int income = c.get_effect().get_value();  // how many coins from a card
 
-		float baseVal; 
+		double baseVal; 
 		if (cind == "Primary") { // Blue cards	
 			baseVal = baseVal (actnums, income, 2); 
 			String type = c.get_cardType();
 
 			if (type == "Wheat") {
 				int num_fruit_veg = p.num_card("Fruit and Vegetable Market");
-				baseVal += (float) 1/12 * 2 * num_fruit_veg;
+				baseVal += (double) 1/12 * 2 * num_fruit_veg;
 			}
 
 			if (type == "Gear") {
 				int num_furniture = p.num_card("Furniture Factory");
-				baseVal += (float) 5/36 * 3 * num_furniture;
+				baseVal += (double) 5/36 * 3 * num_furniture;
 			}
 
 			if (type == "Cow") {
 				int num_cheese_fact = p.num_card("Cheese Factory");
-				baseVal += (float) 1/6 * 3 * num_cheese_fact;
+				baseVal += (double) 1/6 * 3 * num_cheese_fact;
 			}
 
 			if (cname == "Flower Orchard") {
 				if (cname == "Flower Orchard") {
 					int num_flowershop = p.num_card("Flower Shop");
-					baseVal += (float)5/36 * 1 * num_flowershop;
+					baseVal += (double)5/36 * 1 * num_flowershop;
 				}
 			}
 
@@ -126,15 +127,15 @@ public class Heuristics {
 				int num_train_harbor_players = s.num_harbor_train_players();
 				int num_train_noharbor_players = num_trainst_players - num_train_harbor_players;
 
-				float harbor_frequency = (float) 1/2;  // how frequent a player uses their harbor to add 2 to their rolled val 
+				double harbor_frequency = (double) 1/2;  // how frequent a player uses their harbor to add 2 to their rolled val 
 
 				// rolling a 10  -> choice of 10 or 12
-				float roll_10  = ((0 * (float) 1/12 + 12 * (float) 1/12) * harbor_frequency * num_train_harbor_players/ num_players); 
+				double roll_10  = ((0 * (double) 1/12 + 12 * (double) 1/12) * harbor_frequency * num_train_harbor_players/ num_players); 
 				// rolling a 11  -> choice of 11 or 13
-				float roll_11 = ((0 * (float) 1/18 + 13 * (float) 1/18) * harbor_frequency * num_train_harbor_players/ num_players);
+				double roll_11 = ((0 * (double) 1/18 + 13 * (double) 1/18) * harbor_frequency * num_train_harbor_players/ num_players);
 				// rolling a 12  -> choice of 12 or 14 or automatic 12 for train no harbor players
-				float roll_12 = ((12 * (float) 1/36 + 14 * (float) 1/36) * harbor_frequency * num_train_harbor_players/ num_players) + 
-						12 * (float) 1/36 * num_train_noharbor_players/ num_players;  // rolling a 12 
+				double roll_12 = ((12 * (double) 1/36 + 14 * (double) 1/36) * harbor_frequency * num_train_harbor_players/ num_players) + 
+						12 * (double) 1/36 * num_train_noharbor_players/ num_players;  // rolling a 12 
 
 				return roll_10 + roll_11 + roll_12;
 			}
@@ -181,17 +182,21 @@ public class Heuristics {
 		}
 	}
 
-	public static float landmark_values (State s, Player p, Landmark l) {
-		return (float)0.0; 
+	public static double landmark_values (State s, Player p, Landmark l) {
+		return (double)0.0; 
 	}
 
 	/*
 	 * Returns the expected value of establishment e for player p in state s.s
 	 */
-	public static float estVal(State s, Player p, Establishment e) {
+	public static double estVal(State s, Player p, Establishment e) {
 		boolean has_trainst = p.has_TrainSt();
 		if (has_trainst) return (valueOneD(s,p,e) + valueTwoD(s, p, e))/2; 
 		else return valueOneD(s,p,e);
+	}
+	
+	public static double valueAvg(State s, Player p, Establishment e) {
+		return (valueOneD(s,p,e) + valueTwoD(s, p, e))/2; 
 	}
 
 	
@@ -202,13 +207,13 @@ public class Heuristics {
 	 * Takes into account how many dice player p can roll. 
 	 */
 	public static Establishment highest_Establishment(State s, Player p) {
-		HashMap <Establishment, Float> landmarks_rewards = new HashMap <Establishment, Float>();
+		HashMap <Establishment, Double> landmarks_rewards = new HashMap <Establishment, Double>();
 
 		boolean has_trainSt = p.has_TrainSt(); 
 
 		Establishment highest_reward = s.get_available_cards().element();
-		float highest_reward_val = (float) 0; 
-		float reward_val; 
+		double highest_reward_val = (double) 0; 
+		double reward_val; 
 
 		for (Establishment e: s.get_available_cards()) {
 			if (!has_trainSt) {
@@ -236,18 +241,18 @@ public class Heuristics {
 	 * where the value of a card is defined to be the number of coins you are expected to
 	 * get from that card if its activation number is rolled.
 	 */
-	public static float baseVal(LinkedList<Integer> actnums, int income, int numdice) {
+	public static double baseVal(LinkedList<Integer> actnums, int income, int numdice) {
 		if (numdice == 1) { // one die
 			if (actnums.getFirst() > 6) return 0;
-			if (actnums.size() == 1) return (float) income * (float) 1 / 6;
-			return (float) income * (float) 2 / 6;
+			if (actnums.size() == 1) return (double) income * (double) 1 / 6;
+			return (double) income * (double) 2 / 6;
 		}
 		// two dice
 		else if (actnums.getFirst() == 1) return 0;
-		float probtotal = 0;
+		double probtotal = 0;
 		for (Integer actnum : actnums) {
 			int dist = Math.abs(7-actnum);
-			probtotal += (float) (6-dist) / 36;
+			probtotal += (double) (6-dist) / 36;
 		}
 		return probtotal * income;
 	}

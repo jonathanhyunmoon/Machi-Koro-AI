@@ -1,2 +1,5 @@
 /phase3_ai.class
 /Heuristics.class
+/AIhelpers.class
+/TreeState.class
+/UCT.class
