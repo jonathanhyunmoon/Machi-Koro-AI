@@ -1,6 +1,9 @@
 package Components;
 import java.util.*;
 
+import AI.AIhelpers;
+import AI.Heuristics;
+
 public class State {
 	/*
 	 * 	type t = {
@@ -25,6 +28,12 @@ public class State {
 		landmark_cards = lc;
 		current_player = cp;
 	}
+	
+	public static State copyOf(State s) {
+		State temp = new State(s.players,s.bank,s.available_cards,s.landmark_cards,s.current_player);
+		return temp;
+	}
+	
 	public String toString() {
 		String temp="";
 		temp+= "number of players: " + players.size() + "\n";
@@ -126,6 +135,33 @@ public class State {
 		s.current_player %= (s.get_players().size());
 		return s;
 	}
+	
+	/*
+	 * Updates the current player's cash with an addition of the total sum of the expected values of the cards it currently holds
+	 */
+	public void update_pcash(State st, Player p) {
+		double sum = (double) 0; 
+		for (Establishment e: p.get_assets()) {
+			sum += Heuristics.curr_playEstVal(st, p, e);
+		}
+		for (Landmark l: p.get_landmarks()) {
+			sum+= Heuristics.curr_playLandmark(st, p, l); 
+		}
+		
+		p.add_cash((int)sum);
+		
+	}
+	
+	/*
+	 * Updates State s s.t. each player's cash is increased by their expected values of the cards it currently holds. 
+	 */
+	public void update_scash(State s) {
+		LinkedList <Player> players = s.get_players();
+		for (Player p: players) {
+			update_pcash(s, p);
+		}
+	}
+	
 }
 
 

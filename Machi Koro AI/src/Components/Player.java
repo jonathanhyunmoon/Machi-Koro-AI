@@ -1,6 +1,8 @@
 package Components;
 import java.util.LinkedList;
 
+import AI.Heuristics;
+
 public class Player {
 	/*
 	 * 	type t = {
@@ -102,11 +104,16 @@ public class Player {
 		}
 		return sum; 
 	}
-	
+
 	public int num_cup_bread() {
 		return num_type("Cup") + num_type ("Bread");
 	}
+	
+	public void add_cash (int c) {
+		this.cash = cash + c;
+	}
 }
+
 
 
 
