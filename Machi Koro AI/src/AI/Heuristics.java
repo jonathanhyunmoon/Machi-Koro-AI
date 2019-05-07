@@ -12,9 +12,10 @@ import Components.*;
  */
 public class Heuristics {
 
-	public static int valueOneD(State s, Player p, Landmark c) {
-
-		return 0;
+	public static float valueOneD(State s, Player p, Landmark c) {
+		String cname = c.get_name();
+		
+		
 	}
 
 	/*
