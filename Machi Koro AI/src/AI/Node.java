@@ -1,0 +1,40 @@
+package AI;
+
+import java.util.List;
+
+public class Node {
+	private TreeState ts;
+    private Node parent;
+    private List<Node> childArray;
+    
+    public Node(TreeState ts_node) {
+    	ts=ts_node;
+    }
+    public Node(TreeState ts_node, List<Node> cA) {
+    	ts=ts_node;
+    	childArray = cA;
+    }
+    public Node(TreeState ts_node, Node p, List<Node> cA) {
+    	ts=ts_node;
+    	parent = p;
+    	childArray = cA;
+    }
+    
+    // setters and getters
+    public TreeState get_TS() {
+    	return ts;
+    }
+    public Node get_parent() {
+    	return parent;
+    }
+    public List<Node> get_children(){
+    	return childArray;
+    }
+    public void set_parent(Node p) {
+    	parent = p;
+    }
+    public void set_childArray(List<Node> cA) {
+    	childArray = cA;
+    }
+}
+

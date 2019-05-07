@@ -1,5 +1,8 @@
 package AI;
 import Components.State;
+
+import java.util.LinkedList;
+
 import AIhelpers.*;
 
 public class TreeState {

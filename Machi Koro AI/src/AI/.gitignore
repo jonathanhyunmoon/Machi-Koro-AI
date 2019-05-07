@@ -3,3 +3,6 @@
 /AIhelpers.class
 /TreeState.class
 /UCT.class
+/Node.class
+/MonteCarloTreeSearch.class
+/Tree.class
