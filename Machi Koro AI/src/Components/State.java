@@ -28,6 +28,12 @@ public class State {
 		landmark_cards = lc;
 		current_player = cp;
 	}
+	
+	public static State copyOf(State s) {
+		State temp = new State(s.players,s.bank,s.available_cards,s.landmark_cards,s.current_player);
+		return temp;
+	}
+	
 	public String toString() {
 		String temp="";
 		temp+= "number of players: " + players.size() + "\n";

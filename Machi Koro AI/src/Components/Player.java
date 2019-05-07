@@ -110,7 +110,7 @@ public class Player {
 	}
 	
 	public void add_cash (int c) {
-		this.cash = get_cash() + c;
+		this.cash = cash + c;
 	}
 }
 

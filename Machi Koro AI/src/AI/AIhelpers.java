@@ -56,11 +56,11 @@ public class AIhelpers {
 	public static LinkedList<State> childStatesE(State st, LinkedList<Establishment> ests) {
 		LinkedList<State> children = new LinkedList<State>();
 
-		State temp = st;
+		State temp = State.copyOf(st);
 		for (Establishment est : ests) {
 			temp.purchase_establishment(est);
 			children.add(temp);
-			temp = st;
+			temp = State.copyOf(st);
 		}
 
 		//		children.add(st);
@@ -74,11 +74,11 @@ public class AIhelpers {
 	public static LinkedList<State> childStatesL(State st, LinkedList<Landmark> lands) {
 		LinkedList<State> children = new LinkedList<State>();
 
-		State temp = st;
+		State temp = State.copyOf(st);
 		for (Landmark land : lands) {
 			temp.purchase_landmark(land);
 			children.add(temp);
-			temp = st;
+			temp = State.copyOf(st);
 		}
 
 		//		children.add(st);
