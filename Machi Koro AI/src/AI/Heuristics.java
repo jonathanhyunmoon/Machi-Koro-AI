@@ -181,8 +181,12 @@ public class Heuristics {
 		}
 	}
 
-	public static Landmark landmark_values (State s, Player p, Landmark l) {
+	public static float landmark_values (State s, Player p, Landmark l) {
 		return NULL; 
+	}
+
+	public static float valueAvg(State s, Player p, Establishment e) {
+		return (valueOneD(s,p,e) + valueTwoD(s, p, e))/2; 
 	}
 
 	/*
