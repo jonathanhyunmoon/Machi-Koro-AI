@@ -142,10 +142,10 @@ public class State {
 	public void update_pcash(State st, Player p) {
 		double sum = (double) 0; 
 		for (Establishment e: p.get_assets()) {
-			sum += Heuristics.estVal(st, p, e);
+			sum += Heuristics.curr_playEstVal(st, p, e);
 		}
 		for (Landmark l: p.get_landmarks()) {
-			sum+= Heuristics.landmark_values(st, p, l); 
+			sum+= Heuristics.curr_playLandmark(st, p, l); 
 		}
 		
 		p.add_cash((int)sum);
