@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 import Components.*;
 
-public class phase3_ai {
+public class AIhelpers {
 	/* Given the original state origst, return a new state
 	 * reflecting the resulting state after the AI has made a decision
 	 * in phase 3.
@@ -47,6 +47,42 @@ public class phase3_ai {
 		origst.purchase_establishment(bestest);
 		return origst;
 		
+	}
+	
+	/*
+	 * Returns the resulting list of states after the current player in st
+	 * purchases each of the list of establishments
+	 */
+	public static LinkedList<State> childStatesE(State st, LinkedList<Establishment> ests) {
+		LinkedList<State> children = new LinkedList<State>();
+		
+		State temp = st;
+		for (Establishment est : ests) {
+			temp.purchase_establishment(est);
+			children.add(temp);
+			temp = st;
+		}
+		
+//		children.add(st);
+		return children;
+	}
+	
+	/*
+	 * Returns the resulting list of states after the current player in st
+	 * purchases each of the list of landmarks
+	 */
+	public static LinkedList<State> childStatesL(State st, LinkedList<Landmark> lands) {
+		LinkedList<State> children = new LinkedList<State>();
+		
+		State temp = st;
+		for (Landmark land : lands) {
+			temp.purchase_landmark(land);
+			children.add(temp);
+			temp = st;
+		}
+		
+//		children.add(st);
+		return children;
 	}
 	
 	/* returns a LinkedList of landmarks not owned and purchasable

@@ -13,8 +13,7 @@ import Components.*;
 public class Heuristics {
 
 	public static float valueOneD(State s, Player p, Landmark c) {
-		String cname = c.get_name();
-		
+		return (float)0.0;
 		
 	}
 
@@ -183,7 +182,7 @@ public class Heuristics {
 	}
 
 	public static float landmark_values (State s, Player p, Landmark l) {
-		return NULL; 
+		return (float)0.0; 
 	}
 
 	public static float valueAvg(State s, Player p, Establishment e) {

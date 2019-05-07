@@ -13,7 +13,7 @@ public class Main {
 		while (true) {
 			if(!parser.is_blocked(filename)) {
 				st = parser.parse_state(filename);
-				State updated = phase3_ai.make_decision(st);
+				State updated = AIhelpers.make_decision(st);
 				writer.state_to_json(updated, filename);
 			}
 		}
