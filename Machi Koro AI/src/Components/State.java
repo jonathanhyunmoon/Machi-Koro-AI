@@ -152,7 +152,7 @@ public class State {
 	public void update_scash(State s) {
 		LinkedList <Player> players = s.get_players();
 		for (Player p: players) {
-			updateCash(s, p);
+			update_pcash(s, p);
 		}
 	}
 	
