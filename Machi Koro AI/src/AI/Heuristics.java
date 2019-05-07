@@ -82,8 +82,6 @@ public class Heuristics {
 	 */
 	public static float valueTwoD(State s, Player p, Establishment c) {
 
-		// float baseVal_onedie = valueOneD(s, p, c);
-
 		LinkedList<Integer> actnums = c.get_activation_numbers();
 		int num_players = s.get_players().size();
 		String cind = c.get_industry();
@@ -140,7 +138,6 @@ public class Heuristics {
 
 				return roll_10 + roll_11 + roll_12;
 			}
-
 			return baseVal * 1;
 		} else if (cind == "Secondary") { // Green cards
 			if (cname == "Furniture Factory") {
@@ -181,8 +178,11 @@ public class Heuristics {
 			}
 			baseVal = baseVal (actnums, income, 2); 
 			return baseVal * 1/ (num_players);
-
 		}
+	}
+
+	public static Landmark landmark_values (State s, Player p, Landmark l) {
+		return NULL; 
 	}
 
 	/*
@@ -193,18 +193,18 @@ public class Heuristics {
 	 */
 	public static Establishment highest_Establishment(State s, Player p) {
 		HashMap <Establishment, Float> landmarks_rewards = new HashMap <Establishment, Float>();
-		
+
 		boolean has_trainSt = p.has_TrainSt(); 
-		
+
 		Establishment highest_reward = s.get_available_cards().element();
 		float highest_reward_val = (float) 0; 
 		float reward_val; 
-		
+
 		for (Establishment e: s.get_available_cards()) {
 			if (!has_trainSt) {
 				reward_val = valueOneD(s,p,e); 
 				landmarks_rewards.put(e, reward_val);
-				
+
 			} else {
 				reward_val = (valueOneD(s,p,e) + valueTwoD(s, p, e))/2;
 				landmarks_rewards.put(e, reward_val);
@@ -215,10 +215,9 @@ public class Heuristics {
 			}			
 		}
 		return highest_reward;
-
 	}
-	
-	
+
+
 	/*
 	 * Returns the "non-dynamic" expected value of a linkedlist of
 	 * activation numbers. Accounts for number of dice.
