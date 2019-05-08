@@ -44,6 +44,7 @@ public class TreeState {
 	}
 	public void setState(State st) {
 		state = st;
+		playeri = state.get_current_player_int();
 	}
 		
 	/*

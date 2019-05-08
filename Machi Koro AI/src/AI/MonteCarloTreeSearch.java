@@ -14,8 +14,28 @@ public class MonteCarloTreeSearch {
 
 		int end = 0; // FIX FIX FIX
 
-		while(System.currentTimeMillis() < end)
-			return null;
+		while(System.currentTimeMillis() < end) {
+			Node potential = potentialNode(rootNode);
+			if(potential.get_TS().getState().win_condition() != -1) {
+				expand(potential);
+			}
+			Node explore = potential;
+			if(potential.get_children().size() > 0) {
+				explore = potential.getRandomChild();
+			}
+			int result = simulateRandomPlayout(explore);
+			backPropagation(explore, result);
+		}
+		Node winner = rootNode.getChildWithMaxScore();
+		tree.setRoot(winner);
+		return winner.get_TS().getState();
+	}
+	private Node potentialNode(Node root) {
+	    Node node = root;
+	    while (node.get_children().size() != 0) {
+	        node = UCT.best_UCT(node);
+	    }
+	    return node;
 	}
 
 	public void backPropogation (Node n, int player) {

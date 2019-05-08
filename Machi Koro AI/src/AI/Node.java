@@ -1,6 +1,7 @@
 package AI;
 
 import java.util.List;
+import java.util.*;
 
 public class Node {
 	private TreeState ts;
@@ -38,6 +39,11 @@ public class Node {
     }
     public void add_child(Node c) {
     	childArray.add(c);
+    }
+    public Node getRandomChild() {
+    	int rand = (int) Math.random()*(childArray.size());
+    	return childArray.get(rand);
+    	
     }
 }
 
