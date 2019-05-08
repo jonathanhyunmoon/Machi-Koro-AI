@@ -4,9 +4,11 @@ import java.util.List;
 import Components.*;
 public class MonteCarloTreeSearch {
 	static final int WIN_SCORE = 10; 
+	private int client_player;
 
 
 	public State findNextMove(State st) {
+		client_player = st.get_current_player().get_order();
 		Tree tree = new Tree();
 		TreeState rootTS = new TreeState(st, 0, 0);
 		Node rootNode = new Node(rootTS);
@@ -49,6 +51,7 @@ public class MonteCarloTreeSearch {
 		}
 	}
 	
+<<<<<<< HEAD
 	private Node best_node(Node root_node) {
 		Node n  = root_node;
 		while(n.get_children().size() != 0) {
@@ -64,5 +67,27 @@ public class MonteCarloTreeSearch {
 			n.add_child(newNode);
 		});
 	}	
+=======
+	public int simulateRandomPlayout(Node n) {
+		int playout = 10; 
+		Node temp = new Node(n); 
+		TreeState tempState = temp.get_TS(); 
+		int winStatus = temp.get_TS().getState().win_condition(); 
+		if (winStatus != client_player) {
+			temp.get_parent().get_TS().setwinn(Integer.MIN_VALUE);
+			return winStatus;
+		}
+		while(winStatus == -1) {
+			State st = tempState.getState();
+			st = State.nextTurn(st);
+			tempState.setState(st);
+			tempState = State.nextTurn(tempState);
+			tempState = State.randomPlay(tempState);
+			//boardStatus = tempState.getBoard().checkStatus();
+		}
+		return winStatus;
+		
+	}
+>>>>>>> c46434174a2007a84f637c36a7c06a89bdf8a745
 }
 	
