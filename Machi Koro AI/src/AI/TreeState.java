@@ -68,4 +68,8 @@ public class TreeState {
 	public void add_winn(int n) {
 		winn = getwinn() + n; 
 	}
+	
+	public boolean win_cond() {
+		return state.win_condition(s);
+	}
 }

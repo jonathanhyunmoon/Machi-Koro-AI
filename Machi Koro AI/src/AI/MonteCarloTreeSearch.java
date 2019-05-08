@@ -26,4 +26,10 @@ public class MonteCarloTreeSearch {
 			temp = temp.get_parent();
 		}
 	}
+	
+	public int simulateRandomPlayout (Node n) {
+		Node temp = new Node(n); 
+		TreeState tempState = temp.get_TS(); 
+		
+	}
 }

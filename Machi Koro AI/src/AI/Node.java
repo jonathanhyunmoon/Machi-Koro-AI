@@ -7,6 +7,11 @@ public class Node {
     private Node parent;
     private List<Node> childArray;
     
+    public Node (Node n) {
+    	ts = n.get_TS();
+    	parent = n.get_parent();
+    	List<Node> = n.get_children();
+    }
     public Node(TreeState ts_node) {
     	ts=ts_node;
     }

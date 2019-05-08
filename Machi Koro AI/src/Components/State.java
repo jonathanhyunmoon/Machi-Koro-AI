@@ -171,10 +171,11 @@ public class State {
 	}
 
 	/*
-	 * Returns true if State s is a winning condition state, i.e. one player has activated all of its landmark cards.
+	 * Returns order number of player that wins if State s is a winning condition state, i.e. one player has activated all of its landmark cards.
 	 */
-	public boolean win_condition(State s){
+	public int win_condition(State s){
 		LinkedList <Player> players = s.get_players(); 
+		int winner = -1; 
 		for (Player p: players) {
 			boolean ret = true;
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
@@ -182,8 +183,8 @@ public class State {
 			for (Landmark l: all_landmarks) {
 				if (landmarks.indexOf(l) == -1) ret = false; 
 			}
-			if (ret) return ret; 
+			if (ret) return p.get_order(); 
 		}
-		return false; 
+		return winner; 
 	}
 }
