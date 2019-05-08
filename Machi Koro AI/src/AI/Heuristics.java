@@ -458,4 +458,3 @@ public class Heuristics {
 		else return curr_playoneD(s,p,e);
 	}
 }
-}

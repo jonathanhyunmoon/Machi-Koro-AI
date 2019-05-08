@@ -28,12 +28,12 @@ public class State {
 		landmark_cards = lc;
 		current_player = cp;
 	}
-	
+
 	public static State copyOf(State s) {
 		State temp = new State(s.players,s.bank,s.available_cards,s.landmark_cards,s.current_player);
 		return temp;
 	}
-	
+
 	public String toString() {
 		String temp="";
 		temp+= "number of players: " + players.size() + "\n";
@@ -139,23 +139,31 @@ public class State {
 		temp.current_player %= (temp.get_players().size());
 		return temp;
 	}
-	
+
 	/*
 	 * Updates the current player's cash with an addition of the total sum of the expected values of the cards it currently holds
 	 */
 	public void update_pcash(State st, Player p) {
 		double sum = (double) 0; 
+		double subtract = (double) 0;
 		for (Establishment e: p.get_assets()) {
+			if (e.get_cardType() == "Restaurant") { 
+				subtract += Heuristics.curr_playEstVal(st, p, e);
+			}
 			sum += Heuristics.curr_playEstVal(st, p, e);
 		}
 		for (Landmark l: p.get_landmarks()) {
 			sum+= Heuristics.curr_playLandmark(st, p, l); 
 		}
-		
+
 		p.add_cash((int)sum);
-		
+		LinkedList <Player> players = st.get_players(); 
+		for (Player p1 : players) {
+			if (p1 != p) p1.subtract_cash((int) subtract); 
+		}
+
 	}
-	
+
 	/*
 	 * Updates State s s.t. each player's cash is increased by their expected values of the cards it currently holds. 
 	 */
@@ -165,8 +173,21 @@ public class State {
 			update_pcash(s, p);
 		}
 	}
-	
+
+	/*
+	 * Returns true if State s is a winning condition state, i.e. one player has activated all of its landmark cards.
+	 */
+	public boolean win_condition(State s){
+		LinkedList <Player> players = s.get_players(); 
+		for (Player p: players) {
+			boolean ret = true;
+			LinkedList <Landmark> landmarks = p.get_landmarks(); 
+			LinkedList <Landmark> all_landmarks = get_landmark_cards();
+			for (Landmark l: all_landmarks) {
+				if (landmarks.indexOf(l) == -1) ret = false; 
+			}
+			if (ret) return ret; 
+		}
+		return false; 
+	}
 }
-
-
-

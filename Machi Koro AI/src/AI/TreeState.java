@@ -71,4 +71,12 @@ public class TreeState {
 		
 		return childTS;
 	}
+	
+	public void increment_visitn() {
+		visitn = getvisitn() + 1; 
+	}
+	
+	public void add_winn(int n) {
+		winn = getwinn() + n; 
+	}
 }
