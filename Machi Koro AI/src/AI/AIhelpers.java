@@ -52,6 +52,7 @@ public class AIhelpers {
 	/*
 	 * Returns the resulting list of states after the current player in st
 	 * purchases each of the list of establishments
+	 * Does not account for non-purchase moves
 	 */
 	public static LinkedList<State> childStatesE(State st, LinkedList<Establishment> ests) {
 		LinkedList<State> children = new LinkedList<State>();
@@ -63,13 +64,13 @@ public class AIhelpers {
 			temp = State.copyOf(st);
 		}
 
-		//		children.add(st);
 		return children;
 	}
 
 	/*
 	 * Returns the resulting list of states after the current player in st
 	 * purchases each of the list of landmarks
+	 * Does not account for non-purchase moves
 	 */
 	public static LinkedList<State> childStatesL(State st, LinkedList<Landmark> lands) {
 		LinkedList<State> children = new LinkedList<State>();
@@ -81,7 +82,6 @@ public class AIhelpers {
 			temp = State.copyOf(st);
 		}
 
-		//		children.add(st);
 		return children;
 	}
 

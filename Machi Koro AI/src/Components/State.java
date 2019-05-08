@@ -74,7 +74,7 @@ public class State {
 		// updates current player's assets after buying establishment est
 		Player new_player = get_current_player();
 		new_player.purchase_assets(est);
-		remove_current_player();
+		remove_current_player(); //maybe not necessary, since no new player made
 		players.add(new_player);
 	}
 
@@ -131,7 +131,8 @@ public class State {
 	}
 
 	/*
-	 * nextTurn(s) returns a copy of a s with the current_player field of the state updated to be the next player
+	 * nextTurn(s) returns a copy of a s with the current_player field of the
+	 * state updated to be the next player
 	 */
 	public static State nextTurn(State s) {
 		State temp = copyOf(s);
@@ -141,7 +142,8 @@ public class State {
 	}
 
 	/*
-	 * Updates the current player's cash with an addition of the total sum of the expected values of the cards it currently holds
+	 * Updates the current player's cash with an addition of the total sum of
+	 * the expected values of the cards it currently holds
 	 */
 	public void update_pcash(State st, Player p) {
 		double sum = (double) 0; 
@@ -165,7 +167,8 @@ public class State {
 	}
 
 	/*
-	 * Updates State s s.t. each player's cash is increased by their expected values of the cards it currently holds. 
+	 * Updates State s s.t. each player's cash is increased by their expected
+	 * values of the cards it currently holds. 
 	 */
 	public void update_scash(State s) {
 		LinkedList <Player> players = s.get_players();
@@ -175,8 +178,10 @@ public class State {
 	}
 
 	/*
+	 * 
 	 * Returns order number of player that wins if State s is a winning condition state. 
-	 * The winning condition state is defined to be a state where at least one player has activated all of its landmark cards.
+	 * The winning condition state is defined to be a state where at least one
+	 * player has activated all of its landmark cards.
 	 * If no player has won, function returns -1. 
 	 */
 	public int win_condition(){

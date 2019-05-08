@@ -17,6 +17,9 @@ public class TreeState {
 		winn = wn;
 	}
 	
+	/*
+	 * Use when initializing a new node. visitn, winn will be 0
+	 */
 	public TreeState(State st) {
 		state = st;
 		playeri = state.get_current_player_int();
@@ -53,9 +56,11 @@ public class TreeState {
 	 * Each state will be in phase 3.
 	 */
 	public LinkedList<TreeState> childStates() {
+		// TODO: if this is a state already won, no children
 		Player currplayer = state.get_current_player();
 		
-		state = State.nextTurn(state);
+		// first, determine resulting states for all possible purchases made by current player
+		// cannot change currplayer here because that would buy for next player
 		LinkedList<Landmark> landops = AIhelpers.landmarksUnownedPurchasable(state,currplayer);
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
 		
@@ -63,9 +68,19 @@ public class TreeState {
 		estops = AIhelpers.uniqueEst(estops);
 		LinkedList<State> childrenL = AIhelpers.childStatesE(state, estops);
 		children.addAll(childrenL);
-		children.add(state);
 		
-		LinkedList<TreeState> childTS = new LinkedList <TreeState>();
+		State temp = State.copyOf(state);
+		children.addFirst(temp);
+		
+		// change the current player for each state
+		for (State s : children) s = State.nextTurn(s);
+		
+		
+		
+		// TODO: change the players' banks
+		
+		
+		LinkedList<TreeState> childTS = new LinkedList<TreeState>();
 		for(State s: children) {
 			childTS.add(new TreeState(s));
 		}
