@@ -116,6 +116,7 @@ public class Player {
 	public void subtract_cash (int c) {
 		this.cash = cash - c;
 	}
+	
 }
 
 

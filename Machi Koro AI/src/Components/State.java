@@ -170,7 +170,20 @@ public class State {
 		}
 	}
 
+	/*
+	 * Returns true if State s is a winning condition state, i.e. one player has activated all of its landmark cards.
+	 */
+	public boolean win_condition(State s){
+		LinkedList <Player> players = s.get_players(); 
+		for (Player p: players) {
+			boolean ret = true;
+			LinkedList <Landmark> landmarks = p.get_landmarks(); 
+			LinkedList <Landmark> all_landmarks = get_landmark_cards();
+			for (Landmark l: all_landmarks) {
+				if (landmarks.indexOf(l) == -1) ret = false; 
+			}
+			if (ret) return ret; 
+		}
+		return false; 
+	}
 }
-
-
-
