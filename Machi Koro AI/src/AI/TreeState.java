@@ -17,6 +17,12 @@ public class TreeState {
 		winn = wn;
 	}
 	
+	public TreeState(State st) {
+		state = st;
+		playeri = state.get_current_player_int();
+		visitn = 0;
+		winn = 0;
+	}
 	public State getState() {
 		return state;
 	}
@@ -36,7 +42,10 @@ public class TreeState {
 	public void setwinn(int wn) {
 		winn = wn;
 	}
-	
+	public void setState(State st) {
+		state = st;
+	}
+		
 	/*
 	 * Starting from current state, obtain the list of states that the game could
 	 * end up in. Then, updates each players' bank using expected profit.
@@ -45,7 +54,7 @@ public class TreeState {
 	public LinkedList<TreeState> childStates() {
 		Player currplayer = state.get_current_player();
 		
-		state = state.nextTurn(state);
+		state = State.nextTurn(state);
 		LinkedList<Landmark> landops = AIhelpers.landmarksUnownedPurchasable(state,currplayer);
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
 		
@@ -55,9 +64,11 @@ public class TreeState {
 		children.addAll(childrenL);
 		children.add(state);
 		
+		LinkedList<TreeState> childTS = new LinkedList <TreeState>();
+		for(State s: children) {
+			childTS.add(new TreeState(s));
+		}
 		
-		
-		
-		return children;
+		return childTS;
 	}
 }

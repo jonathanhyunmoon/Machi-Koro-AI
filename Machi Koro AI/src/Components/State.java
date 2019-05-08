@@ -130,10 +130,14 @@ public class State {
 		return count;
 	}
 
-	public State nextTurn(State s) {
-		s.current_player++;
-		s.current_player %= (s.get_players().size());
-		return s;
+	/*
+	 * nextTurn(s) returns a copy of a s with the current_player field of the state updated to be the next player
+	 */
+	public static State nextTurn(State s) {
+		State temp = copyOf(s);
+		temp.current_player++;
+		temp.current_player %= (temp.get_players().size());
+		return temp;
 	}
 	
 	/*

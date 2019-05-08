@@ -36,5 +36,8 @@ public class Node {
     public void set_childArray(List<Node> cA) {
     	childArray = cA;
     }
+    public void add_child(Node c) {
+    	childArray.add(c);
+    }
 }
 
