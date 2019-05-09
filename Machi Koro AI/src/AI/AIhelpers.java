@@ -54,7 +54,7 @@ public class AIhelpers {
 	 * purchases each of the list of establishments
 	 * Does not account for non-purchase moves
 	 */
-	public static LinkedList<State> childStatesE(State st, LinkedList<Establishment> ests) {
+	public static LinkedList<State> childStatesE(State st, LinkedList<Establishment> ests) throws Exception {
 		LinkedList<State> children = new LinkedList<State>();
 
 		State temp = State.copyOf(st);
@@ -72,7 +72,7 @@ public class AIhelpers {
 	 * purchases each of the list of landmarks
 	 * Does not account for non-purchase moves
 	 */
-	public static LinkedList<State> childStatesL(State st, LinkedList<Landmark> lands) {
+	public static LinkedList<State> childStatesL(State st, LinkedList<Landmark> lands) throws Exception {
 		LinkedList<State> children = new LinkedList<State>();
 
 		State temp = State.copyOf(st);
@@ -122,7 +122,6 @@ public class AIhelpers {
 	public static LinkedList<Establishment> estOpsPurchasable(State st, Player p) {
 		LinkedList<Establishment> ret = new LinkedList<Establishment> (); 
 		LinkedList<Establishment> allest = st.get_available_cards(); 
-		
 		for (Establishment e: allest) {
 			if (e.get_constructionCost() <= p.get_cash()) ret.add(e);
 		}

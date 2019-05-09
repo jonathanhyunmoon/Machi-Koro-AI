@@ -34,7 +34,7 @@ public class Player {
 		order = o;
 	}
 	
-	public static Player copyOf(Player p) {
+	public static Player copyOf(Player p) throws Exception {
 		LinkedList<Establishment> assetscpy = new LinkedList<Establishment>();
 		for (Establishment e : p.get_assets()) {
 			Establishment cpy = Establishment.copyOf(e);
