@@ -68,6 +68,8 @@ public class TreeState {
 	 */
 	public LinkedList<TreeState> childStates() {
 		// TODO: if this is a state already won, make sure no children returned
+		if (state.win_condition() != -1) return new LinkedList<TreeState>();
+		
 		Player currplayer = state.get_current_player();
 		
 		// first, determine resulting states for all possible purchases made by current player
