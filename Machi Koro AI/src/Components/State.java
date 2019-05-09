@@ -29,7 +29,7 @@ public class State {
 		current_player = cp;
 	}
 
-	public static State copyOf(State s) {
+	public static State copyOf(State s) throws Exception {
 		LinkedList<Player> playerscpy = new LinkedList<Player>();
 		for (Player p : s.get_players()) {
 			Player cpy = Player.copyOf(p);
@@ -153,7 +153,7 @@ public class State {
 	 * nextTurn(s) returns a copy of a s with the current_player field of the
 	 * state updated to be the next player
 	 */
-	public static State nextTurn(State s) {
+	public static State nextTurn(State s) throws Exception {
 		State temp = copyOf(s);
 		temp.current_player++;
 		temp.current_player %= (temp.get_players().size());

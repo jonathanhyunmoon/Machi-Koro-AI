@@ -66,24 +66,27 @@ public class TreeState {
 	 * the resulting banks will be an estimate.
 	 * Each state will be in phase 3.
 	 */
-	public LinkedList<TreeState> childStates() {
+	public LinkedList<TreeState> childStates() throws Exception {
 		// TODO: if this is a state already won, make sure no children returned
 		if (state.win_condition() != -1) return new LinkedList<TreeState>();
 		
 		Player currplayer = state.get_current_player();
-		System.out.println("CP 4: curr_player's bank: " + currplayer.get_cash());
 		
 		// first, determine resulting states for all possible purchases made by current player
 		// cannot change currplayer here because that would buy for next player
 		LinkedList<Landmark> landops = AIhelpers.landmarksUnownedPurchasable(state,currplayer);
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
-		
-		System.out.println("CP 4b: curr_player's bank: " + currplayer.get_cash());
 		LinkedList<Establishment> estops = AIhelpers.estOpsPurchasable(state, currplayer);
 		estops = AIhelpers.uniqueEst(estops);
 		
+		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
+		System.out.println("\t Establishments purchaseable \n");
 		for (Establishment e : estops) {
-			System.out.println(e.get_name());
+			System.out.println("\t>"+ e.get_name() + "\t:\t" + e.get_constructionCost());
+		}
+		System.out.println("\t Landmarks purchaseable \n");
+		for (Landmark l : landops) {
+			System.out.println("\t>"+ l.get_name() + "\t:\t" + l.get_constructionCost());
 		}
 		
 		LinkedList<State> childrenE = AIhelpers.childStatesE(state, estops);
@@ -92,8 +95,9 @@ public class TreeState {
 		State temp = State.copyOf(state);
 		children.addFirst(temp);
 		
+		LinkedList<State> children2 = new LinkedList <State> ();
 		// change the current player for each state
-		for (State s : children) s = State.nextTurn(s);
+		for (State s : children) children2.add(State.nextTurn(s));
 		
 		
 		

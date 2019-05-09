@@ -58,7 +58,7 @@ public class Establishment  {
 		}
 	}
 	
-	public Establishment copyOf(Establishment e) throws Exception {
+	public static Establishment copyOf(Establishment e) throws Exception {
 		Establishment temp = new Establishment(e.get_name(),
 				e.get_industry(),
 				e.get_cardType(),

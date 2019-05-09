@@ -9,7 +9,7 @@ public class MonteCarloTreeSearch {
 	private int client_player; // the player the agent will decide for
 
 
-	public State findNextMove(State st) {
+	public State findNextMove(State st) throws Exception {
 		client_player = st.get_current_player().get_order(); // player the agent is deciding for
 		Tree tree = new Tree();
 		TreeState rootTS = new TreeState(st);
@@ -20,12 +20,13 @@ public class MonteCarloTreeSearch {
 		long runtime = 2;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
-		System.out.println(rootTS.getState().get_current_player().get_cash());
+		
 		while((current_t - start_t) < (runtime * 1000)) {
 			Node potential = potentialNode(rootNode);
+			System.out.println("CP 1");
 			if(potential.get_TS().getState().win_condition() == -1) {
 				expand(potential);
-				System.out.println("checkpoint 2");
+				System.out.println("number of children from root: " + rootNode.get_children().size());
 			}
 			
 			//System.out.println("current player's cash: " + potential.get_TS().getState().get_current_player().get_cash());
@@ -35,8 +36,9 @@ public class MonteCarloTreeSearch {
 			if(potential.get_children().size() > 0) {
 				explore = potential.getRandomChild(); // can be improved
 			}
+			System.out.println("CP2");
 			int result = simulateRandomPlayout(explore);
-
+			System.out.println("CP3");
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
@@ -102,7 +104,7 @@ public class MonteCarloTreeSearch {
 	 * Adds any possible child states to n's list of children and
 	 * sets each child's parent as n
 	 */
-	private void expand(Node n) {
+	private void expand(Node n) throws Exception {
 		List<TreeState> potentialStates = n.get_TS().childStates();
 		potentialStates.forEach(treeState -> {
 			Node newNode = new Node(treeState);
@@ -118,8 +120,7 @@ public class MonteCarloTreeSearch {
 	 * This does not keep track of the states encountered or moves made.
 	 * This is a simulation of the randomly chosen child node.
 	 */
-	public int simulateRandomPlayout(Node n) {
-		int playout = 10; // playout depth?
+	public int simulateRandomPlayout(Node n) throws Exception {
 		Node temp = new Node(n); 
 		TreeState tempState = temp.get_TS(); 
 		int winStatus = tempState.getState().win_condition(); 
@@ -134,7 +135,9 @@ public class MonteCarloTreeSearch {
 //		}
 		// play random moves until a player wins
 		while(winStatus == -1) {
+			System.out.println("CP 4");
 			LinkedList<TreeState> children = tempState.childStates();
+			System.out.println("\tsize of children states: " + children.size());
 			Random rand = new Random();
 			tempState = children.get(rand.nextInt(children.size()));
 			winStatus = tempState.getState().win_condition(); 

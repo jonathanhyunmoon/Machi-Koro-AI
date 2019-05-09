@@ -48,7 +48,7 @@ public class Landmark {
 					" is not a valid string representation of a card_type.");
 		}
 	}
-	public Landmark copyOf(Landmark l) throws Exception {
+	public static Landmark copyOf(Landmark l) throws Exception {
 		Landmark temp = new Landmark(l.get_name(),
 				l.get_industry(),
 				l.get_cardType(),
