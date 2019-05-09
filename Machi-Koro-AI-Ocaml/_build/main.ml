@@ -964,18 +964,87 @@ let rec main_phase (st: State.t) : unit =
   if State.is_winning_state next_state then winning_phase ()
   else main_phase next_state
 
+let rec ai_main_phase (st: State.t) (num: int) : unit = 
+  let _ = display_main_phase_msg_1 st in
+  let current_player = State.get_current_player_id st in
+  let _ = display_main_phase_msg_3 st current_player in
+  let cityhall_c = State.cityhall_collect 
+      (State.id_to_Player st current_player) in 
+  let st = 
+    if cityhall_c then 
+      let _ = 
+        baseprint
+          ("City Hall effect has been activated. "^
+           "Since you had 0 coins, you will now have 1\n"); 
+        print_string  "> "; in
+      (* give player 1 coin from bank *)
+      let player = Player.add_cash (State.id_to_Player st current_player) 1 in
+      State.withdraw_bank
+        (State.replace_player_list (State.replace_player player st.players) st)
+        1
+    else st in
+  let s1 = do_phase1 st (State.reroll 
+                           (State.id_to_Player st current_player)) in
+  let s2 = phase_2 s1 in
+  let s3 = if st.current_player < num then let _ = print_string "hi" in  phase_3_AI s2 else phase_3 s2 in
+  let _ = display_main_phase_msg_2 s3 current_player in 
+  let _ = display_main_phase_msg_3 s3 current_player in 
+  let redoturn = 
+    State.take_other_turn (State.id_to_Player st current_player) in
+  let next_state = take_2nd_turn s3 redoturn current_player in
+  if State.is_winning_state next_state then winning_phase ()
+  else main_phase next_state
+
 (*___________________________________________________________________________*)
+
+let setup_AI (init_st:State.t) = 
+  ANSITerminal.(print_string [white;Bold] 
+                  "How many AIs do you want to play with"); 
+  print_string  "> ";
+  let num_players = List.length(init_st.players) in
+  let rec await_number() = 
+    try
+      match clean(read_line()) with 
+      | str_num -> let num = int_of_string str_num in 
+        if num>0 & num < num_players then ai_main_phase init_st num
+        else ANSITerminal.(print_string [white;Bold] 
+                             "There needs to be at least one AI agent and at least one human
+                  player.\n"); await_number()
+      | _ -> await_number()
+    with 
+    | _ ->  ANSITerminal.(print_string [white;Bold] 
+                            "Please input a number greater than 0 and less than the number of 
+                  players you are playing with.\n"); await_number() in
+  await_number()
 
 let play_game () =
   let initial = init_phase [] [] in
-  main_phase initial
+  let _ =  ANSITerminal.(print_string [white;Bold] 
+                           "Do you want to play with AIs?\n") in 
+  let _ = print_string  "> " in 
+  let rec await_AI_play () = 
+    match clean(read_line()) with 
+    | "yes" | "y" -> setup_AI initial
+    | "no" | "n" -> main_phase initial
+    | _ -> let _ =  ANSITerminal.(print_string [white;Bold] 
+                                    "Please input either yes or no.\n") in
+      await_AI_play () in
+  await_AI_play() 
+
 let play_game_expanded game = 
   let landmarks = Parse_json.load_landmarks (Yojson.Basic.from_file game) in
   let establishments =  
     Parse_json.load_establishments 
       (Yojson.Basic.from_file game) in
-  main_phase (init_phase landmarks establishments)
-
+  let _ =  ANSITerminal.(print_string [white;Bold] 
+                           "Do you want to play with AIs?\n") in 
+  let _ = print_string  "> " in 
+  let rec await_AI_play () = 
+    match clean(read_line()) with 
+    | "yes" | "y" -> setup_AI (init_phase landmarks establishments)
+    | "no" | "n" -> main_phase (init_phase landmarks establishments)
+    | _ -> await_AI_play () in
+  await_AI_play() 
 
 let rec load_expansion_pack_phase () = 
   ANSITerminal.(print_string [white;Bold] 

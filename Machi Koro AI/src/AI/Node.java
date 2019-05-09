@@ -3,6 +3,9 @@ package AI;
 import java.util.List;
 import java.util.*;
 
+/*
+ * A node of the MCTS tree.
+ */
 public class Node {
 	private TreeState ts;
     private Node parent;
@@ -48,7 +51,9 @@ public class Node {
     public Node getRandomChild() {
     	int rand = (int) Math.random()*(childArray.size());
     	return childArray.get(rand);
-    	
+    }
+    public Node getMaxChild() {
+    	return Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
     }
 }
 

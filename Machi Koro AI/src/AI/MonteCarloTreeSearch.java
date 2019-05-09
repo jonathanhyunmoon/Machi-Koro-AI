@@ -1,24 +1,28 @@
 package AI;
 import java.util.List;
+import java.util.Random;
+import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final int WIN_SCORE = 10; 
+	static final int WIN_SCORE = 1; 
 	private int client_player; // the player the agent will decide for
 
 
 	public State findNextMove(State st) {
 		client_player = st.get_current_player().get_order();
 		Tree tree = new Tree();
-		TreeState rootTS = new TreeState(st, 0, 0);
+		TreeState rootTS = new TreeState(st);
 		Node rootNode = new Node(rootTS);
 
-
-		int end = 0; // FIX FIX FIX
-
-		while(System.currentTimeMillis() < end) {
+		// how long (in seconds) may MCTS run for?
+		long runtime = 10;
+		
+		long start_t = System.currentTimeMillis();
+		long current_t = System.currentTimeMillis();
+		while((current_t - start_t) < (runtime * 1000)) {
 			Node potential = potentialNode(rootNode);
-			if(potential.get_TS().getState().win_condition() != -1) {
+			if(potential.get_TS().getState().win_condition() == -1) {
 				expand(potential);
 			}
 			Node explore = potential;
@@ -26,9 +30,12 @@ public class MonteCarloTreeSearch {
 				explore = potential.getRandomChild(); // can be improved
 			}
 			int result = simulateRandomPlayout(explore);
-			backPropagation(explore, result);
+			backPropogation(explore, result);
+			
+			current_t = System.currentTimeMillis();
 		}
-		Node winner = rootNode.getChildWithMaxScore();
+		
+		Node winner = rootNode.getMaxChild();
 		tree.setRoot(winner);
 		return winner.get_TS().getState();
 	}
@@ -46,13 +53,17 @@ public class MonteCarloTreeSearch {
 	    }
 	    return node;
 	}
-// TODO: check this
+
+	/*
+	 * Starting from the child node that was just simulated, add 1 to visitn
+	 * and winn if the node's player was the winner of the simulation, then traverse up.
+	 */
 	public void backPropogation (Node n, int player) {
 		Node temp = n;
 		while (temp != null) {
 			temp.get_TS().increment_visitn(); 
 			if (temp.get_TS().getPlayeri() == player) {
-				temp.get_TS().add_winn(WIN_SCORE);
+				temp.get_TS().add_winn(1);
 			}
 			temp = temp.get_parent();
 		}
@@ -79,29 +90,38 @@ public class MonteCarloTreeSearch {
 			n.add_child(newNode);
 		});
 	}	
+
 	/*
 	 * Starting from node n, simulate a random playout of a game until a win/loss.
-	 * Return the result.
+	 * Return the result (player who won).
 	 * This does not keep track of the states encountered or moves made.
+	 * This is a simulation of the randomly chosen child node.
 	 */
 	public int simulateRandomPlayout(Node n) {
 		int playout = 10; // playout depth?
 		Node temp = new Node(n); 
 		TreeState tempState = temp.get_TS(); 
 		int winStatus = tempState.getState().win_condition(); 
-		if (winStatus != -1 && winStatus != client_player) {
-			temp.get_parent().get_TS().setwinn(Integer.MIN_VALUE);
-			return winStatus;
-		}
+		
+		// in tic tac toe, if the next move results in a loss then the parent node
+		// is also a losing situation and should be avoided. however in machi koro
+		// it is impossible to predict that you will lose on the next turn, so this part
+		// is irrelevant.
+//		if (winStatus != -1 && winStatus != client_player) { 
+//			temp.get_parent().get_TS().setwinn(Integer.MIN_VALUE); 
+//			return winStatus;
+//		}
+		
+		// play random moves until a player wins
 		while(winStatus == -1) {
-			State st = tempState.getState();
-			st = State.nextTurn(st);
-			tempState.setState(st);
-			tempState = State.nextTurn(tempState);
-			tempState = State.randomPlay(tempState);
-			//boardStatus = tempState.getBoard().checkStatus();
+			LinkedList<TreeState> children = tempState.childStates();
+			Random rand = new Random();
+			tempState = children.get(rand.nextInt(children.size()));
+			
+			winStatus = tempState.getState().win_condition(); 
 		}
-		return winStatus;
+		
+		return winStatus; // returns winner of random playout
 		
 	}
 }
