@@ -84,6 +84,7 @@ public class TreeState {
 		
 		
 		// TODO: change the players' banks
+		for (State s: children) State.update_scash(s);
 		
 		
 		LinkedList<TreeState> childTS = new LinkedList<TreeState>();
