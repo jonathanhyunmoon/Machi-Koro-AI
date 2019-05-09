@@ -145,7 +145,7 @@ public class State {
 	 * Updates the current player's cash with an addition of the total sum of
 	 * the expected values of the cards it currently holds
 	 */
-	public void update_pcash(State st, Player p) {
+	public static void update_pcash(State st, Player p) {
 		double sum = (double) 0; 
 		double subtract = (double) 0;
 		for (Establishment e: p.get_assets()) {
@@ -170,7 +170,7 @@ public class State {
 	 * Updates State s s.t. each player's cash is increased by their expected
 	 * values of the cards it currently holds. 
 	 */
-	public void update_scash(State s) {
+	public static void update_scash(State s) {
 		LinkedList <Player> players = s.get_players();
 		for (Player p: players) {
 			update_pcash(s, p);
