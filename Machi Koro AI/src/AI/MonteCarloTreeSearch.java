@@ -118,7 +118,6 @@ public class MonteCarloTreeSearch {
 	 * This is a simulation of the randomly chosen child node.
 	 */
 	public int simulateRandomPlayout(Node n) {
-		int playout = 10; // playout depth?
 		Node temp = new Node(n); 
 		TreeState tempState = temp.get_TS(); 
 		int winStatus = tempState.getState().win_condition(); 
