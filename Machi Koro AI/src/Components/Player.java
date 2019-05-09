@@ -33,6 +33,31 @@ public class Player {
 		landmarks = l;
 		order = o;
 	}
+	
+	public static Player copyOf(Player p) {
+		LinkedList<Establishment> assetscpy = new LinkedList<Establishment>();
+		for (Establishment e : p.get_assets()) {
+			Establishment cpy = Establishment.copyOf(e);
+			assetscpy.add(cpy);
+		}
+		
+		LinkedList<Landmark> landscpy = new LinkedList<Landmark>();
+		for (Landmark l : p.get_landmarks()) {
+			Landmark cpy = Landmark.copyOf(l);
+			landscpy.add(cpy);
+		}
+		
+		Player temp = new Player(p.get_id(),
+				p.get_num_dice(),
+				p.get_dice_rolls(),
+				p.get_cash(),
+				assetscpy,
+				landscpy,
+				p.get_order());
+		
+		return temp;
+	}
+	
 	public String get_id() {
 		return id;
 	}
