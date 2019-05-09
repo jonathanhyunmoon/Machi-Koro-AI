@@ -92,8 +92,14 @@ public class Landmark {
 		return face.toString();
 	}
 	
-	public boolean equals(Landmark l) {
-		if (name == l.get_name()) return true; 
-		else return false; 
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+		Landmark l = (Landmark) o;
+		return this.name.equals(l.get_name());
 	}
 }

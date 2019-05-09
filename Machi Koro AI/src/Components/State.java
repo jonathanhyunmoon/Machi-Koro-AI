@@ -232,7 +232,7 @@ public class State {
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
 			LinkedList <Landmark> all_landmarks = get_landmark_cards();
 			for (Landmark l: all_landmarks) {
-				if (landmarks.indexOf(l) == -1) ret = false; 
+				if (!landmarks.contains(l)) ret = false; 
 			}
 			if (ret) return p.get_order(); 
 		}
