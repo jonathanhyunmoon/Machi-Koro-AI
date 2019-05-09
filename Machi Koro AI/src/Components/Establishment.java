@@ -85,4 +85,14 @@ public class Establishment  {
 	public Est_Effect get_effect() {
 		return effect;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+		Establishment e = (Establishment) o;
+		return this.name == e.get_name();
+	}
 }
