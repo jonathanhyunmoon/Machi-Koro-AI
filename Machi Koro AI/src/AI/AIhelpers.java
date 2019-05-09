@@ -111,8 +111,9 @@ public class AIhelpers {
 	public static LinkedList<Establishment> estOpsPurchasable(State st, Player p) {
 		LinkedList<Establishment> ret = new LinkedList<Establishment> (); 
 		LinkedList<Establishment> allest = st.get_available_cards(); 
-		
+		System.out.println("player " + p.get_id() + " has " + p.get_cash() + " coins.");
 		for (Establishment e: allest) {
+			System.out.println("\t "+ e.get_name() + " has cost " + e.get_constructionCost());
 			if (e.get_constructionCost() <= p.get_cash()) ret.add(e);
 		}
 		

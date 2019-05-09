@@ -20,11 +20,12 @@ public class MonteCarloTreeSearch {
 		long runtime = 2;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
+		System.out.println(rootTS.getState().get_current_player().get_cash());
 		while((current_t - start_t) < (runtime * 1000)) {
 			Node potential = potentialNode(rootNode);
 			if(potential.get_TS().getState().win_condition() == -1) {
-				System.out.println("checkpoint 2");
 				expand(potential);
+				System.out.println("checkpoint 2");
 			}
 			
 			//System.out.println("current player's cash: " + potential.get_TS().getState().get_current_player().get_cash());

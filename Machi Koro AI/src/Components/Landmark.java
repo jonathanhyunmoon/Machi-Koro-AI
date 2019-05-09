@@ -48,6 +48,16 @@ public class Landmark {
 					" is not a valid string representation of a card_type.");
 		}
 	}
+	public Landmark copyOf(Landmark l) throws Exception {
+		Landmark temp = new Landmark(l.get_name(),
+				l.get_industry(),
+				l.get_cardType(),
+				l.get_constructionCost(),
+				l.get_effect(),
+				l.get_face()
+				);
+		return temp;
+	}
 	public industry str_to_industry(String s) throws Exception {
 		switch(s) {
 			case "Landmark": return industry.Landmark;

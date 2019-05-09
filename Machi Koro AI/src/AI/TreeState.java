@@ -71,12 +71,14 @@ public class TreeState {
 		if (state.win_condition() != -1) return new LinkedList<TreeState>();
 		
 		Player currplayer = state.get_current_player();
+		System.out.println("CP 4: curr_player's bank: " + currplayer.get_cash());
 		
 		// first, determine resulting states for all possible purchases made by current player
 		// cannot change currplayer here because that would buy for next player
 		LinkedList<Landmark> landops = AIhelpers.landmarksUnownedPurchasable(state,currplayer);
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
 		
+		System.out.println("CP 4b: curr_player's bank: " + currplayer.get_cash());
 		LinkedList<Establishment> estops = AIhelpers.estOpsPurchasable(state, currplayer);
 		estops = AIhelpers.uniqueEst(estops);
 		
