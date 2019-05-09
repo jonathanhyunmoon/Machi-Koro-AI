@@ -93,16 +93,27 @@ public class AIhelpers {
 		LinkedList<Landmark> landsowned = p.get_landmarks();
 		LinkedList<Landmark> alllands = st.get_landmark_cards();
 
+		
+		
 		int cash = p.get_cash();
 
 		int totallands = alllands.size();
 		for (int i = 0; i < totallands; i++) {
 			Landmark curr = alllands.get(i);
-			if (!landsowned.contains(curr) && curr.get_constructionCost() <= cash) landsnotowned.add(curr);
+			if (!lcontains(landsowned,curr) && curr.get_constructionCost() <= cash) landsnotowned.add(curr);
 		}
 
 		return landsnotowned;
 	}
+	
+	public static boolean lcontains(LinkedList<Landmark> list, Landmark l) {
+		for (Landmark elt : list) {
+			if (elt.equals(l)) return true;
+		}
+		return false;
+	}
+	
+	
 
 	/* returns a LinkedList of establishments not owned and purchasable
 	 * by player p
