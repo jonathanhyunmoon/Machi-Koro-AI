@@ -79,8 +79,13 @@ public class TreeState {
 		
 		LinkedList<Establishment> estops = AIhelpers.estOpsPurchasable(state, currplayer);
 		estops = AIhelpers.uniqueEst(estops);
-		LinkedList<State> childrenL = AIhelpers.childStatesE(state, estops);
-		children.addAll(childrenL);
+		
+		for (Establishment e : estops) {
+			System.out.println(e.get_name());
+		}
+		
+		LinkedList<State> childrenE = AIhelpers.childStatesE(state, estops);
+		children.addAll(childrenE);
 		
 		State temp = State.copyOf(state);
 		children.addFirst(temp);

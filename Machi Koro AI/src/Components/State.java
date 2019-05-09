@@ -179,10 +179,10 @@ public class State {
 			sum+= Heuristics.curr_playLandmark(st, p, l); 
 		}
 
-		p.add_cash((int)sum);
+		p.add_cash((int)(sum+0.5));
 		LinkedList <Player> players = st.get_players(); 
 		for (Player p1 : players) {
-			if (p1 != p) p1.subtract_cash((int) subtract); 
+			if (p1 != p) p1.subtract_cash((int) (subtract+0.5)); 
 		}
 
 	}

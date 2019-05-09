@@ -104,7 +104,7 @@ public class AIhelpers {
 		return landsnotowned;
 	}
 
-	/* returns a LinkedList of establishments not owned and purchsable
+	/* returns a LinkedList of establishments not owned and purchasable
 	 * by player p
 	 * maybe dont add to list 2 dice establishments if train station unowned?
 	 */

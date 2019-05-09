@@ -9,37 +9,56 @@ public class MonteCarloTreeSearch {
 	private int client_player; // the player the agent will decide for
 
 
-	public State findNextMove(State st) {
+	public State findNextMove(State st) throws Exception{
 		client_player = st.get_current_player().get_order();
 		Tree tree = new Tree();
 		TreeState rootTS = new TreeState(st);
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 10;
-		
+		long runtime = 2;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		while((current_t - start_t) < (runtime * 1000)) {
 			Node potential = potentialNode(rootNode);
 			if(potential.get_TS().getState().win_condition() == -1) {
+				System.out.println("checkpoint 2");
 				expand(potential);
 			}
+			
+			//System.out.println("current player's cash: " + potential.get_TS().getState().get_current_player().get_cash());
+			
+			//System.out.println("root's child: " + rootNode.getMaxChild().get_TS().getState().get_current_player().get_cash());
 			Node explore = potential;
 			if(potential.get_children().size() > 0) {
 				explore = potential.getRandomChild(); // can be improved
 			}
 			int result = simulateRandomPlayout(explore);
+
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
 		}
-		
 		Node winner = rootNode.getMaxChild();
 		tree.setRoot(winner);
+		System.out.println("depth:" + depth(rootNode));
 		return winner.get_TS().getState();
 	}
 	
+	
+	public int depth(Node n) {
+		if (n.get_children().size() == 0) {
+			return 0;
+		}
+		int maxdepth=-1;
+		for (Node node :n.get_children()) {
+			int curr_depth = depth(node);
+			if(curr_depth > maxdepth) {
+				maxdepth = curr_depth;
+			}
+		}
+		return maxdepth+1;
+	}
 	/*
 	 * Traverse down the tree based on UCT until a leaf (node with no children)
 	 * is encountered. This would happen on an unexplored node or a finished game
@@ -111,13 +130,11 @@ public class MonteCarloTreeSearch {
 //			temp.get_parent().get_TS().setwinn(Integer.MIN_VALUE); 
 //			return winStatus;
 //		}
-		
 		// play random moves until a player wins
 		while(winStatus == -1) {
 			LinkedList<TreeState> children = tempState.childStates();
 			Random rand = new Random();
 			tempState = children.get(rand.nextInt(children.size()));
-			
 			winStatus = tempState.getState().win_condition(); 
 		}
 		

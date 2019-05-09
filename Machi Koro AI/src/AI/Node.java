@@ -18,6 +18,7 @@ public class Node {
     }
     public Node(TreeState ts_node) {
     	ts=ts_node;
+    	childArray = new LinkedList<Node>();
     }
     public Node(TreeState ts_node, List<Node> cA) {
     	ts=ts_node;
@@ -53,6 +54,9 @@ public class Node {
     	return childArray.get(rand);
     }
     public Node getMaxChild() {
+    	for (Node c : childArray) {
+    		System.out.println("Number of times visited: " + c.get_TS().getvisitn());
+    	}
     	return Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
     }
 }
