@@ -30,7 +30,26 @@ public class State {
 	}
 
 	public static State copyOf(State s) {
-		State temp = new State(s.players,s.bank,s.available_cards,s.landmark_cards,s.current_player);
+		LinkedList<Player> playerscpy = new LinkedList<Player>();
+		for (Player p : s.get_players()) {
+			Player cpy = Player.copyOf(p);
+			playerscpy.add(cpy);
+		}
+		
+		LinkedList<Establishment> assetscpy = new LinkedList<Establishment>();
+		for (Establishment e : s.get_available_cards()) {
+			Establishment cpy = Establishment.copyOf(e);
+			assetscpy.add(cpy);
+		}
+		
+		LinkedList<Landmark> landscpy = new LinkedList<Landmark>();
+		for (Landmark l : s.get_landmark_cards()) {
+			Landmark cpy = Landmark.copyOf(l);
+			landscpy.add(cpy);
+		}
+		
+		State temp = new State(playerscpy,s.bank,assetscpy,landscpy,s.current_player);
+		
 		return temp;
 	}
 
