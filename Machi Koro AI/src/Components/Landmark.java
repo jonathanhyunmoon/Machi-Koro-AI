@@ -81,4 +81,9 @@ public class Landmark {
 	public String get_face() { 
 		return face.toString();
 	}
+	
+	public boolean equals(Landmark l) {
+		if (name == l.get_name()) return true; 
+		else return false; 
+	}
 }

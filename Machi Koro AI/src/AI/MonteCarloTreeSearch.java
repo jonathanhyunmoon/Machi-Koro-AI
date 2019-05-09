@@ -9,10 +9,11 @@ public class MonteCarloTreeSearch {
 	private int client_player; // the player the agent will decide for
 
 
-	public State findNextMove(State st) throws Exception{
-		client_player = st.get_current_player().get_order();
+	public State findNextMove(State st) {
+		client_player = st.get_current_player().get_order(); // player the agent is deciding for
 		Tree tree = new Tree();
 		TreeState rootTS = new TreeState(st);
+		
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
