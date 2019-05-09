@@ -93,6 +93,6 @@ public class Establishment  {
             return false;
         }
 		Establishment e = (Establishment) o;
-		return this.name == e.get_name();
+		return this.name.equals(e.get_name());
 	}
 }

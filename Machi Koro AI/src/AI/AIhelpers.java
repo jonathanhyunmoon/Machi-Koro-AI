@@ -128,7 +128,9 @@ public class AIhelpers {
 		LinkedList<Establishment> uniEst = new LinkedList<Establishment>();
 		for (int i = 0; i < size; i++) {
 			Establishment curr = est.get(i);
-			if (!econtains(uniEst,curr)) uniEst.add(curr);
+			if (!econtains(uniEst,curr)) {
+				uniEst.add(curr);
+			}
 		}
 		return uniEst;
 	}
