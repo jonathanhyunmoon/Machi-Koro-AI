@@ -4,11 +4,18 @@ import AI.AIhelpers.*;
 import Components.*;
 import java.util.LinkedList;
 
+/*
+ * A wrapper class for state, including parameters for MCTS including:
+ *  - playeri: current player of this node
+ *  - visitn: number of simulations after this node
+ *  - winn: number of wins after this node
+ */
 public class TreeState {
-	State state;
-	int playeri;
-	int visitn;
-	int winn;
+	State state; // game state
+	int playeri; // current player of this node
+	int visitn; // number of simulations after this node
+	int winn; // number of node wins with after this node
+	
 	
 	public TreeState(State st, int vn, int wn) {
 		state = st;
@@ -26,6 +33,8 @@ public class TreeState {
 		visitn = 0;
 		winn = 0;
 	}
+
+	
 	public State getState() {
 		return state;
 	}
@@ -53,10 +62,12 @@ public class TreeState {
 	/*
 	 * Starting from current state, obtain the list of states that the game could
 	 * end up in. Then, updates each players' bank using expected profit.
+	 * For the root node, this will return a valid set of child nodes, though
+	 * the resulting banks will be an estimate.
 	 * Each state will be in phase 3.
 	 */
 	public LinkedList<TreeState> childStates() {
-		// TODO: if this is a state already won, no children
+		// TODO: if this is a state already won, make sure no children returned
 		Player currplayer = state.get_current_player();
 		
 		// first, determine resulting states for all possible purchases made by current player
@@ -77,7 +88,7 @@ public class TreeState {
 		
 		
 		
-		// TODO: change the players' banks
+		// change the players' banks
 		for (State s: children) State.update_scash(s);
 		
 		

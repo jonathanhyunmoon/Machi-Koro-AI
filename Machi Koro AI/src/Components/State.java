@@ -144,10 +144,31 @@ public class State {
 	/*
 	 * Updates the current player's cash with an addition of the total sum of
 	 * the expected values of the cards it currently holds
+	 * 
+	 * TODO: implement the following:
+	 * Add: expval of primary always, expval of secondary if p == currp,
+	 * 		expval of restaurant if p != currp, expval of purple if p == currp
+	 * Subtract: total expval of restaurants of other players if p == currp
+	 * 
+	 * Account for bank accordingly
+	 * 
+	 * pitfalls:
+	 *  - assumes stealing-type cards always obtain full value
+	 *  - assumes a constant income, which might mean that some purchases made
+	 *  	might not actually be possible depending on dice roll. possibly the
+	 *  	biggest problem with our MCTS currently.
+	 *  	fortunately, the call to childNodes on the root node in the expand
+	 *  	phase still returns a valid set of children, as it uses the real
+	 *  	banks of players. however, the banks of the children use this
+	 *  	estimate.
 	 */
 	public static void update_pcash(State st, Player p) {
 		double sum = (double) 0; 
 		double subtract = (double) 0;
+		Player currp = st.get_current_player();
+		
+		
+		
 		for (Establishment e: p.get_assets()) {
 			if (e.get_cardType() == "Restaurant") { 
 				subtract += Heuristics.curr_playEstVal(st, p, e);
