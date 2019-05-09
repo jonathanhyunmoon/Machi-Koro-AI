@@ -58,7 +58,6 @@ public class MonteCarloTreeSearch {
 		}
 	}
 	
-<<<<<<< HEAD
 	private Node best_node(Node root_node) {
 		Node n  = root_node;
 		while(n.get_children().size() != 0) {
@@ -80,7 +79,6 @@ public class MonteCarloTreeSearch {
 			n.add_child(newNode);
 		});
 	}	
-=======
 	/*
 	 * Starting from node n, simulate a random playout of a game until a win/loss.
 	 * Return the result.
@@ -106,6 +104,5 @@ public class MonteCarloTreeSearch {
 		return winStatus;
 		
 	}
->>>>>>> c46434174a2007a84f637c36a7c06a89bdf8a745
 }
 	
