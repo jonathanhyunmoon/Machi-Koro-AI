@@ -109,16 +109,14 @@ public class AIhelpers {
 	 * maybe dont add to list 2 dice establishments if train station unowned?
 	 */
 	public static LinkedList<Establishment> estOpsPurchasable(State st, Player p) {
-		LinkedList<Establishment> estOps = new LinkedList<Establishment>();
-		LinkedList<Establishment> allest = st.get_available_cards();
-		int cash = p.get_cash();
-
-		int allestsize = allest.size();
-		for (int i = 0; i < allestsize; i++) {
-			Establishment curr = allest.get(i);
-			if (curr.get_constructionCost() <= cash) estOps.add(curr);
+		LinkedList<Establishment> ret = new LinkedList<Establishment> (); 
+		LinkedList<Establishment> allest = st.get_available_cards(); 
+		
+		for (Establishment e: allest) {
+			if (e.get_constructionCost() <= p.get_cash()) ret.add(e);
 		}
-		return estOps;
+		
+		return ret; 
 	}
 
 	/* returns a LinkedList of establishments with only unique elements
