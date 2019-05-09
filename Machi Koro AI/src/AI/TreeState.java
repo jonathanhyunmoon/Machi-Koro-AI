@@ -4,11 +4,17 @@ import AI.AIhelpers.*;
 import Components.*;
 import java.util.LinkedList;
 
+/*
+ * A wrapper class for state, including parameters for MCTS including:
+ *  - playeri: current player of this node
+ *  - visitn: number of simulations after this node
+ *  - winn: number of wins after this node
+ */
 public class TreeState {
-	State state;
-	int playeri;
-	int visitn;
-	int winn;
+	State state; // game state
+	int playeri; // current player of this node
+	int visitn; // number of simulations after this node
+	int winn; // number of node wins with after this node
 	
 	public TreeState(State st, int vn, int wn) {
 		state = st;
