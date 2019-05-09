@@ -128,9 +128,16 @@ public class AIhelpers {
 		LinkedList<Establishment> uniEst = new LinkedList<Establishment>();
 		for (int i = 0; i < size; i++) {
 			Establishment curr = est.get(i);
-			if (!uniEst.contains(curr)) uniEst.add(curr);
+			if (!econtains(uniEst,curr)) uniEst.add(curr);
 		}
 		return uniEst;
+	}
+	
+	public static boolean econtains(LinkedList<Establishment> list, Establishment e) {
+		for (Establishment elt : list) {
+			if (elt.equals(e)) return true;
+		}
+		return false;
 	}
 
 	/* given a LinkedList of establishments, returns a LinkedList
