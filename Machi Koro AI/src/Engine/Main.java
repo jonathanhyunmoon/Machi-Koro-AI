@@ -14,7 +14,8 @@ public class Main {
 		while (true) {
 			if(!parser.is_blocked(filename)) {
 				st = parser.parse_state(filename);
-				State updated = mcts.findNextMove(st);
+				State mctsmove = mcts.findNextMove(st);
+				State updated = AIhelpers.correctState(st, mctsmove);
 				writer.state_to_json(updated, filename);
 			}
 		}
