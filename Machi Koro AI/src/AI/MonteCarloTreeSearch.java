@@ -7,8 +7,7 @@ import Components.*;
 public class MonteCarloTreeSearch {
 	static final int WIN_SCORE = 1; 
 	private int client_player; // the player the agent will decide for
-
-
+	
 	public State findNextMove(State st) throws Exception {
 		client_player = st.get_current_player().get_order(); // player the agent is deciding for
 		Tree tree = new Tree();
@@ -17,7 +16,7 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 2;
+		long runtime = 15;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		

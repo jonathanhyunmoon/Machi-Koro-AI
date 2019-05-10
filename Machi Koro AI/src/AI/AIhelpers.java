@@ -37,9 +37,9 @@ public class AIhelpers {
 				removeEst(passets,e);
 			}
 			
-			if (qassets.size() != 1) throw new Exception("qassets not 1");
+			if (passets.size() != 1) throw new Exception("passets not 1");
 			
-			Establishment decisione = qassets.get(0);
+			Establishment decisione = passets.get(0);
 			origst.purchase_establishment(decisione);
 			return origst;
 		}
@@ -62,9 +62,9 @@ public class AIhelpers {
 				removeEst(plands,l);
 			}
 			
-			if (qlands.size() != 1) throw new Exception("qlands not 1");
+			if (plands.size() != 1) throw new Exception("plands not 1");
 			
-			Landmark decisionl = qlands.get(0);
+			Landmark decisionl = plands.get(0);
 			origst.purchase_landmark(decisionl);
 			return origst;
 		}
