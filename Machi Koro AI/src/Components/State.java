@@ -84,6 +84,13 @@ public class State {
 		}
 		return null;
 	}
+	public Player get_playeri(int i) {
+		for (Player p: players) {
+			if (p.get_order() == i)
+				return p;
+		}
+		return null;
+	}
 
 	public void purchase_establishment (Establishment est) {
 		available_cards.remove(est);
