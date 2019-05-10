@@ -79,15 +79,15 @@ public class TreeState {
 		LinkedList<Establishment> estops = AIhelpers.estOpsPurchasable(state, currplayer);
 		estops = AIhelpers.uniqueEst(estops);
 		
-		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
-		System.out.println("\t Establishments purchaseable \n");
-		for (Establishment e : estops) {
-			System.out.println("\t>"+ e.get_name() + "\t:\t" + e.get_constructionCost());
-		}
-		System.out.println("\t Landmarks purchaseable \n");
-		for (Landmark l : landops) {
-			System.out.println("\t>"+ l.get_name() + "\t:\t" + l.get_constructionCost());
-		}
+//		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
+//		System.out.println("\t Establishments purchaseable \n");
+//		for (Establishment e : estops) {
+//			System.out.println("\t>"+ e.get_name() + "\t:\t" + e.get_constructionCost());
+//		}
+//		System.out.println("\t Landmarks purchaseable \n");
+//		for (Landmark l : landops) {
+//			System.out.println("\t>"+ l.get_name() + "\t:\t" + l.get_constructionCost());
+//		}
 		
 		LinkedList<State> childrenE = AIhelpers.childStatesE(state, estops);
 		children.addAll(childrenE);
@@ -102,11 +102,11 @@ public class TreeState {
 		
 		
 		// change the players' banks
-		for (State s: children) State.update_scash(s);
+		for (State s: children2) State.update_scash(s);
 		
 		
 		LinkedList<TreeState> childTS = new LinkedList<TreeState>();
-		for(State s: children) {
+		for(State s: children2) {
 			childTS.add(new TreeState(s));
 		}
 		

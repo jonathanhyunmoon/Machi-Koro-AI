@@ -91,11 +91,6 @@ public class Landmark {
 	public String get_face() { 
 		return face.toString();
 	}
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> 7702b2869ccc63891a1ad5fe27efdc63d678ab90
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
