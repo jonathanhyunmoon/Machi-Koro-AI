@@ -16,6 +16,7 @@ public class State {
 	 */
 	private LinkedList <Player> players;
 	private int bank;
+	private double fbank;
 	private LinkedList <Establishment> available_cards;
 	private LinkedList <Landmark> landmark_cards;
 	private int current_player;
@@ -24,6 +25,7 @@ public class State {
 			LinkedList <Landmark> lc, int cp) {
 		players = ps;
 		bank = b;
+		fbank = (double) b;
 		available_cards = ac;
 		landmark_cards = lc;
 		current_player = cp;
@@ -189,13 +191,13 @@ public class State {
 		double currsteal = (double) 0;
 		
 		for (Establishment e: p.get_assets()) {
-			if (e.get_cardType().equals("Restaurant")) { 
-				currsteal += Heuristics.curr_playEstVal(this, p, e);
-			}
-			sum += Heuristics.curr_playEstVal(this, p, e);
+			double value = Heuristics.curr_playEstVal(this, p, e);
+			if (e.get_cardType().equals("Restaurant")) currsteal += value;
+			sum += value;
 		}
 		
 		bank -= (int)(sum-currsteal + 0.5);
+		if (bank <= 0) throw new Exception("bank is broke");
 		
 		for (Landmark l: p.get_landmarks()) {
 			sum += Heuristics.curr_playLandmark(this, p, l); 

@@ -79,15 +79,38 @@ public class TreeState {
 		LinkedList<Establishment> estops = AIhelpers.estOpsPurchasable(state, currplayer);
 		estops = AIhelpers.uniqueEst(estops);
 		
-//		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
-//		System.out.println("\t Establishments purchasable \n");
-//		for (Establishment e : estops) {
-//			System.out.println("\t>"+ e.get_name() + "\t:\t" + e.get_constructionCost());
-//		}
-//		System.out.println("\t Landmarks purchasable \n");
-//		for (Landmark l : landops) {
-//			System.out.println("\t>"+ l.get_name() + "\t:\t" + l.get_constructionCost());
-//		}
+		// **************** BEGIN DEBUGGING ******************
+		
+		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
+		System.out.println("\t Establishments purchasable \n");
+		for (Establishment e : estops) {
+			System.out.println("  \t> "+ e.get_constructionCost() + " : " + e.get_name());
+		}
+		System.out.println("\t Landmarks purchasable \n");
+		for (Landmark l : landops) {
+			System.out.println("  \t> "+ l.get_constructionCost() + " : " + l.get_name());
+		}
+		if (state.get_current_player().get_cash() == 0) {
+			System.out.println("ERROR: p has " + state.get_current_player().get_cash() + " coins.");
+			System.out.println("\t Establishments owned");
+			for (Establishment e : currplayer.get_assets()) {
+				System.out.println("  \t> "+ e.get_constructionCost() + " : " + e.get_name());
+			}
+			System.out.println("\n\t Landmarks owned");
+			for (Landmark l : currplayer.get_landmarks()) {
+				System.out.println("  \t> "+ l.get_constructionCost() + " : " + l.get_name());
+			}
+			double sum = 0;
+			for (Establishment e: currplayer.get_assets()) {
+				sum += Heuristics.curr_playEstVal(state, currplayer, e);
+			}
+			System.out.println("\n with income: " + sum + " AKA " + (int)(sum+0.5));
+
+			throw new Exception("currp is broke");
+		}
+		// **************** END DEBUGGING ********************
+
+		
 		
 		LinkedList<State> childrenE = AIhelpers.childStatesE(state, estops);
 		children.addAll(childrenE);
@@ -104,6 +127,7 @@ public class TreeState {
 		LinkedList<TreeState> childTS = new LinkedList<TreeState>();
 		for(State s: children2) {
 			s.update_scash();
+			
 			childTS.add(new TreeState(s));
 		}
 		

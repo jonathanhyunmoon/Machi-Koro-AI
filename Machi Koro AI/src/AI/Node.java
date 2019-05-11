@@ -53,9 +53,10 @@ public class Node {
     	int rand = (int) Math.random()*(childArray.size());
     	return childArray.get(rand);
     }
-    public Node getMaxChild() {
+    public Node getMaxChild() throws Exception {
     	for (Node c : childArray) {
-    		System.out.println("Number of times visited: " + c.get_TS().getvisitn());
+    		System.out.println("Number of times visited: " + c.get_TS().getvisitn()
+    				+ " - " + AIhelpers.stateDiff(ts.getState(), c.get_TS().getState()));
     	}
     	return Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
     }

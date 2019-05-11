@@ -4,6 +4,71 @@ import java.util.LinkedList;
 import Components.*;
 
 public class AIhelpers {
+	public static String stateDiff(State origst, State next) throws Exception {
+		Player currplayer = origst.get_current_player();
+		Player updatedp = next.get_playeri(currplayer.get_order());
+		
+		int cpas = currplayer.get_assets().size();
+		int upas = updatedp.get_assets().size();
+		int cpls = currplayer.get_landmarks().size();
+		int upls = updatedp.get_landmarks().size();
+		
+		boolean asseq = cpas == upas;
+		boolean landeq = cpls == upls;
+		if (asseq && landeq) return "no change";
+		
+		if (!asseq) {
+			Player p = cpas > upas ? currplayer : updatedp; // larger
+			Player q = cpas > upas ? updatedp : currplayer; // smaller
+			LinkedList<Establishment> passets = new LinkedList<Establishment>();
+			for (Establishment e : p.get_assets()) {
+				Establishment temp = Establishment.copyOf(e);
+				passets.add(temp);
+			}
+
+			LinkedList<Establishment> qassets = new LinkedList<Establishment>();
+			for (Establishment e : q.get_assets()) {
+				Establishment temp = Establishment.copyOf(e);
+				qassets.add(temp);
+			}
+
+			for (Establishment e : qassets) {
+				removeEst(passets, e);
+			}
+
+			if (passets.size() != 1)
+				throw new Exception("passets not 1");
+
+			Establishment decisione = passets.get(0);
+			return decisione.get_name();
+		} else if (!landeq) {
+			Player p = cpls > upls ? currplayer : updatedp; // larger
+			Player q = cpls > upls ? updatedp : currplayer; // smaller
+			LinkedList<Landmark> plands = new LinkedList<Landmark>();
+			for (Landmark l : p.get_landmarks()) {
+				Landmark temp = Landmark.copyOf(l);
+				plands.add(temp);
+			}
+
+			LinkedList<Landmark> qlands = new LinkedList<Landmark>();
+			for (Landmark l : q.get_landmarks()) {
+				Landmark temp = Landmark.copyOf(l);
+				qlands.add(temp);
+			}
+
+			for (Landmark l : qlands) {
+				removeEst(plands, l);
+			}
+
+			if (plands.size() != 1)
+				throw new Exception("plands not 1");
+
+			Landmark decisionl = plands.get(0);
+			return decisionl.get_name();
+		}
+		return "wtf";
+	}
+	
 	public static State correctState(State origst, State mcts) throws Exception {
 		
 		Player currplayer = origst.get_current_player();

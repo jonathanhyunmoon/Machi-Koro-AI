@@ -421,7 +421,10 @@ public class Heuristics {
 	 * Returns the expected value of establishment e for player p in state s.s
 	 */
 	public static double curr_playEstVal(State s, Player p, Establishment e) throws Exception {
-		if (p.has_TrainSt()) return (curr_playoneD(s,p,e) + curr_playTwoD(s, p, e))/2; 
+		if (p.has_TrainSt()) {
+			System.out.println("TRAINOWNED" + curr_playoneD(s,p,e) + "; "+curr_playTwoD(s, p, e));
+			return (curr_playoneD(s,p,e) + curr_playTwoD(s, p, e))/(double)2; 
+		}
 		return curr_playoneD(s,p,e);
 	}
 }
