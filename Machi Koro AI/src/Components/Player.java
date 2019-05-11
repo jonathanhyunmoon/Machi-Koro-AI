@@ -145,6 +145,12 @@ public class Player {
 		}
 		return false;
 	}
+	public boolean has_Land(String s) {
+		for (Landmark l: landmarks) {
+			if (l.get_name().equals(s)) return true;
+		}
+		return false;
+	}
 
 	public int num_type(String type) {
 		int sum = 0;

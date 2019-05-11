@@ -212,7 +212,17 @@ public class State {
 		if (fbank <= 0) throw new Exception("bank is broke");
 		
 		for (Landmark l: p.get_landmarks()) {
-			sum += Heuristics.curr_playLandmark(this, p, l); 
+			String lname = l.get_name();
+			switch(lname) {
+			case "Amusement Park":
+				sum *= (double)7/6;
+				continue;
+			case "Radio Tower":
+				sum *= 2;
+			default:
+				sum += Heuristics.curr_playLandmark(this, p, l);
+			}
+			 
 		}
 
 		p.add_cash(sum);

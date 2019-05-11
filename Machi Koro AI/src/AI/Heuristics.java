@@ -300,6 +300,9 @@ public class Heuristics {
 
 
 		int income = c.get_effect().get_value();  // how many coins from a card
+		boolean cuporbread = c.get_cardType().equals("Cup") || c.get_cardType().equals("Bread");
+		if (p.has_Land("Shopping Mall") && cuporbread) income++;
+		
 		if (cind.equals("Primary")) { // blue cards: value does not change with current player	
 			return baseVal(actnums, income, 1);
 		} else if (cind.equals("Secondary")) { // green cards: only receive income if it is your turn
@@ -417,17 +420,17 @@ public class Heuristics {
 		String lname = l.get_name();
 		switch (lname) {
 		case "City Hall":
-			return 1;
+			return 0.1;
 		case "Harbor":
-			return 2;
+			return (double)2/6;
 		case "Train Station":
 			return 4;
-		case "Shopping Mall":
-			return 10;
-		case "Amusement Park":
-			return 16;
-		case "Radio Tower":
-			return 22;
+//		case "Shopping Mall":
+//			return 0;
+//		case "Amusement Park":
+//			return (double)16/6;
+//		case "Radio Tower":
+//			return (double)22/6;
 		case "Airport":
 			return 30;
 		default: return 0;
