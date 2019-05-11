@@ -248,12 +248,12 @@ public class AIhelpers {
 
 		
 		
-		int cash = p.get_cash();
+		double cash = p.get_fcash();
 
 		int totallands = alllands.size();
 		for (int i = 0; i < totallands; i++) {
 			Landmark curr = alllands.get(i);
-			if (!lcontains(landsowned,curr) && curr.get_constructionCost() <= cash) landsnotowned.add(curr);
+			if (!lcontains(landsowned,curr) && (double)curr.get_constructionCost() <= cash) landsnotowned.add(curr);
 		}
 
 		return landsnotowned;
@@ -276,7 +276,7 @@ public class AIhelpers {
 		LinkedList<Establishment> ret = new LinkedList<Establishment> (); 
 		LinkedList<Establishment> allest = st.get_available_cards(); 
 		for (Establishment e: allest) {
-			if (e.get_constructionCost() <= p.get_cash()) ret.add(e);
+			if ((double)e.get_constructionCost() <= p.get_fcash()) ret.add(e);
 		}
 		
 		return ret; 

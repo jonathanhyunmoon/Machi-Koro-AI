@@ -414,7 +414,24 @@ public class Heuristics {
 	}
 
 	public static double curr_playLandmark(State s, Player p, Landmark l){
-		return (double)0.0;
+		String lname = l.get_name();
+		switch (lname) {
+		case "City Hall":
+			return 1;
+		case "Harbor":
+			return 2;
+		case "Train Station":
+			return 4;
+		case "Shopping Mall":
+			return 10;
+		case "Amusement Park":
+			return 16;
+		case "Radio Tower":
+			return 22;
+		case "Airport":
+			return 30;
+		default: return 0;
+		}
 	}
 
 	/*
@@ -422,7 +439,6 @@ public class Heuristics {
 	 */
 	public static double curr_playEstVal(State s, Player p, Establishment e) throws Exception {
 		if (p.has_TrainSt()) {
-			System.out.println("TRAINOWNED" + curr_playoneD(s,p,e) + "; "+curr_playTwoD(s, p, e));
 			return (curr_playoneD(s,p,e) + curr_playTwoD(s, p, e))/(double)2; 
 		}
 		return curr_playoneD(s,p,e);
