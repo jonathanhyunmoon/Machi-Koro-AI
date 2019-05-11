@@ -19,7 +19,6 @@ public class UCT {
 		double success_rate = ((double) w)/((double) n);
 		double c = Math.sqrt(2); // exploration parameter
 		double exploration_factor = c* Math.sqrt(Math.log(t) / (double) n);
-		System.out.println("UCT VALUE IS: " + success_rate + exploration_factor);
 		return landbuff * (success_rate + exploration_factor);
 	}
 	

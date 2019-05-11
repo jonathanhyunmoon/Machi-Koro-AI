@@ -6,7 +6,7 @@ import AI.*;
 public class Main {
 	public static void main(String [] args) throws Exception {
 		String jon = "C:/Users/hyun0/Documents/vmshared/ai_help";
-		String jon2 = "C:Users/hyun0/Documents/Machi-Koro-AI/ai_help";
+		String jon2 ="C:/Users/hyun0/Documents/Machi-Koro-AI/Machi Koro AI/ai_help";
 		String jas = "/Users/JasonJung/OneDrive/Sophomore/sem_2/ai/Machi-Koro-AI/ai_help";
 		String win;
 		
