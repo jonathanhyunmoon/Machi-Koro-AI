@@ -6,11 +6,11 @@ import AI.*;
 public class Main {
 	public static void main(String [] args) throws Exception {
 		String jon = "C:/Users/hyun0/Documents/vmshared/ai_help";
-		String jason = "/Users/JasonJung/OneDrive/Sophomore/sem\ 2/ai/Machi-Koro-AI/ai_help";
-		String winice;
+		String jas = "/Users/JasonJung/OneDrive/Sophomore/sem_2/ai/Machi-Koro-AI/ai_help";
+		String win;
 		
 		// change this after pulling
-		String filename = jason;
+		String filename = jas;
 		
 		Parse_JSON parser = new Parse_JSON();
 		State st; 
@@ -21,7 +21,7 @@ public class Main {
 				st = parser.parse_state(filename);
 				State mctsmove = mcts.findNextMove(st);
 				State updated = AIhelpers.correctState(st, mctsmove);
-				writer.state_to_json(updated, filename);
+				writer.state_to_json(st, filename);
 			}
 		}
 	}

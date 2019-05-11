@@ -19,6 +19,7 @@ public class Player {
 	private int num_dice;
 	private LinkedList <Integer> dice_rolls;
 	private int cash;
+	private double fcash;
 	private LinkedList <Establishment> assets;
 	private LinkedList <Landmark> landmarks;
 	private int order;
@@ -29,6 +30,18 @@ public class Player {
 		num_dice = nd;
 		dice_rolls = dr;
 		cash = c;
+		fcash = (double) c;
+		assets = a;
+		landmarks = l;
+		order = o;
+	}
+	public Player(String i, int nd, LinkedList <Integer> dr, double c, LinkedList <Establishment> a, 
+			LinkedList <Landmark> l, int o) {
+		id = i;
+		num_dice = nd;
+		dice_rolls = dr;
+		cash = 0;
+		fcash = (double) c;
 		assets = a;
 		landmarks = l;
 		order = o;
@@ -50,7 +63,7 @@ public class Player {
 		Player temp = new Player(p.get_id(),
 				p.get_num_dice(),
 				p.get_dice_rolls(),
-				p.get_cash(),
+				p.get_fcash(),
 				assetscpy,
 				landscpy,
 				p.get_order());
@@ -80,6 +93,9 @@ public class Player {
 	public int get_cash() {
 		return cash;
 	}
+	public double get_fcash() {
+		return fcash;
+	}
 	public LinkedList <Establishment> get_assets(){
 		return assets;
 	}
@@ -92,14 +108,14 @@ public class Player {
 
 	public void purchase_assets (Establishment est) {
 		assets.add(est);
-		int const_cost = est.get_constructionCost();
-		cash = cash - const_cost; 
+		double const_cost = est.get_constructionCost();
+		fcash -= const_cost; 
 	}
 
 	public void purchase_landmarks (Landmark lm) {
 		landmarks.add(lm);
-		int const_cost = lm.get_constructionCost();
-		cash = cash - const_cost;
+		double const_cost = lm.get_constructionCost();
+		fcash -= const_cost;
 	}
 
 	/*
@@ -142,12 +158,12 @@ public class Player {
 		return num_type("Cup") + num_type("Bread");
 	}
 	
-	public void add_cash (int c) {
-		this.cash += c;
+	public void add_cash (double c) {
+		this.fcash += (double) c;
 	}
 	
-	public void subtract_cash (int c) {
-		this.cash -= c;
+	public void subtract_cash (double c) {
+		this.fcash -= (double) c;
 	}
 	
 }

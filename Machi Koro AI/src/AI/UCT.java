@@ -8,14 +8,19 @@ public class UCT {
 	 * otherwise identical.
 	 * source: https://en.wikipedia.org/wiki/Monte_Carlo_tree_search#Exploration_and_exploitation
 	 */
-	public static double UCT_value(int t, double w, int n) {
+	public static double UCT_value(int t, double w, int n,Node parent, Node child) {
 		if(n == 0) return Integer.MAX_VALUE;
-
+		
+		double landbuff = Integer.MAX_VALUE;
+		int parentlands = parent.get_TS().getState().get_landmark_cards().size();
+		int childlands = child.get_TS().getState().get_landmark_cards().size();
+		if (!(parentlands < childlands)) landbuff = 1;
+		
 		double success_rate = ((double) w)/((double) n);
 		double c = Math.sqrt(2); // exploration parameter
 		double exploration_factor = c* Math.sqrt(Math.log(t) / (double) n);
 		
-		return success_rate + exploration_factor;
+		return landbuff * (success_rate + exploration_factor);
 	}
 	
 	/*
@@ -27,6 +32,6 @@ public class UCT {
 	public static Node best_UCT(Node n) {
 		int pV = n.get_TS().getvisitn();
 		return Collections.max(n.get_children(),
-				Comparator.comparing(c -> UCT_value(pV, c.get_TS().getwinn(), c.get_TS().getvisitn())));
+				Comparator.comparing(c -> UCT_value(pV, c.get_TS().getwinn(), c.get_TS().getvisitn(),n,c)));
 	}
 }

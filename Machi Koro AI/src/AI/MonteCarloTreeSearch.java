@@ -16,7 +16,7 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 15;
+		long runtime = 20;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		

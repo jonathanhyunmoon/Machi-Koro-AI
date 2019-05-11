@@ -16,6 +16,7 @@ public class State {
 	 */
 	private LinkedList <Player> players;
 	private int bank;
+	private double fbank;
 	private LinkedList <Establishment> available_cards;
 	private LinkedList <Landmark> landmark_cards;
 	private int current_player;
@@ -24,6 +25,16 @@ public class State {
 			LinkedList <Landmark> lc, int cp) {
 		players = ps;
 		bank = b;
+		fbank = (double) b;
+		available_cards = ac;
+		landmark_cards = lc;
+		current_player = cp;
+	}
+	public State (LinkedList <Player> ps, double b, LinkedList <Establishment> ac,
+			LinkedList <Landmark> lc, int cp) {
+		players = ps;
+		bank = 0;
+		fbank = (double) b;
 		available_cards = ac;
 		landmark_cards = lc;
 		current_player = cp;
@@ -48,7 +59,7 @@ public class State {
 			landscpy.add(cpy);
 		}
 		
-		State temp = new State(playerscpy,s.bank,assetscpy,landscpy,s.current_player);
+		State temp = new State(playerscpy,s.get_fbank(),assetscpy,landscpy,s.current_player);
 		
 		return temp;
 	}
@@ -67,6 +78,9 @@ public class State {
 	}
 	public int get_bank() {
 		return bank;
+	} 
+	public double get_fbank() {
+		return fbank;
 	} 
 	public LinkedList <Establishment> get_available_cards(){
 		return available_cards;
@@ -92,13 +106,13 @@ public class State {
 		return null;
 	}
 	public void sub_bank(int i) {
-		bank -= i;
+		fbank -= i;
 	}
 
 	public void purchase_establishment (Establishment est) {
 		available_cards.remove(est);
-		int const_cost = est.get_constructionCost();
-		bank += const_cost;
+		double const_cost = est.get_constructionCost();
+		fbank += const_cost;
 
 		// updates current player's assets after buying establishment est
 		Player new_player = get_current_player();
@@ -108,8 +122,8 @@ public class State {
 	}
 
 	public void purchase_landmark (Landmark lm) {
-		int const_cost = lm.get_constructionCost();
-		bank += const_cost;
+		double const_cost = lm.get_constructionCost();
+		fbank += const_cost;
 
 		// updates current player's assets after buying landmark lm
 		Player new_player = get_current_player();
@@ -184,27 +198,27 @@ public class State {
 	 *  	banks of players. however, the banks of the children use this
 	 *  	estimate.
 	 */
-	public int update_pcash(Player p) throws Exception {
+	public double update_pcash(Player p) throws Exception {
 		double sum = (double) 0; 
 		double currsteal = (double) 0;
 		
 		for (Establishment e: p.get_assets()) {
-			if (e.get_cardType().equals("Restaurant")) { 
-				currsteal += Heuristics.curr_playEstVal(this, p, e);
-			}
-			sum += Heuristics.curr_playEstVal(this, p, e);
+			double value = Heuristics.curr_playEstVal(this, p, e);
+			if (e.get_cardType().equals("Restaurant")) currsteal += value;
+			sum += value;
 		}
 		
-		bank -= (int)(sum-currsteal + 0.5);
+		fbank -= (sum-currsteal);
+		if (fbank <= 0) throw new Exception("bank is broke");
 		
 		for (Landmark l: p.get_landmarks()) {
 			sum += Heuristics.curr_playLandmark(this, p, l); 
 		}
 
-		p.add_cash((int)(sum+0.5));
+		p.add_cash(sum);
 		
 
-		return (int)(currsteal+0.5);
+		return currsteal;
 	}
 
 	/*
@@ -212,7 +226,7 @@ public class State {
 	 * values of the cards it currently holds. 
 	 */
 	public void update_scash() throws Exception {
-		int currsteal = 0;
+		double currsteal = (double) 0;
 		for (Player p: players) {
 			currsteal += update_pcash(p);
 		}
