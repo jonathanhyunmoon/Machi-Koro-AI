@@ -716,6 +716,8 @@ and phase_3_AI (st: State.t): State.t =
   let filename = "ai_help" in 
   let address = "/media/sf_vmshared/ai_help.json" in
   let _ = Save_to_json.save_to_file_AI st_json address in
+  let _ = if Load_from_json.is_blocked(address)
+    then print_string "hi" else print_string "bye" in 
   let _ =  print_endline ("fetching ai help") in
   let rec await_update()= 
     if

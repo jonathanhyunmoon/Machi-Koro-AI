@@ -716,6 +716,8 @@ and phase_3_AI (st: State.t): State.t =
   let filename = "ai_help" in 
   let address = "/media/sf_vmshared/ai_help.json" in
   let _ = Save_to_json.save_to_file_AI st_json address in
+  let _ = if Load_from_json.is_blocked(address)
+    then print_string "hi" else print_string "bye" in 
   let _ =  print_endline ("fetching ai help") in
   let rec await_update()= 
     if
@@ -986,7 +988,7 @@ let rec ai_main_phase (st: State.t) (num: int) : unit =
   let s1 = do_phase1 st (State.reroll 
                            (State.id_to_Player st current_player)) in
   let s2 = phase_2 s1 in
-  let s3 = if st.current_player < num then let _ = print_string "hi" in  phase_3_AI s2 else phase_3 s2 in
+  let s3 = if st.current_player < num then phase_3_AI s2 else phase_3 s2 in
   let _ = display_main_phase_msg_2 s3 current_player in 
   let _ = display_main_phase_msg_3 s3 current_player in 
   let redoturn = 
