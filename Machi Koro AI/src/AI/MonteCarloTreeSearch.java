@@ -5,9 +5,10 @@ import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final int WIN_SCORE = 1; 
+	static final double WIN_SCORE = 1; 
+	private final int MAX_DEPTH = 50;
 	private int client_player; // the player the agent will decide for
-	
+	private int windepth;
 	public State findNextMove(State st) throws Exception {
 		client_player = st.get_current_player().get_order(); // player the agent is deciding for
 		Tree tree = new Tree();
@@ -77,10 +78,16 @@ public class MonteCarloTreeSearch {
 	 */
 	public void backPropogation (Node n, int player) {
 		Node temp = n;
+		double depthscale = (double) 1 / windepth;
+		
 		while (temp != null) {
 			temp.get_TS().increment_visitn(); 
 			if (temp.get_TS().getPlayeri() == player) {
-				temp.get_TS().add_winn(1);
+				if (!(windepth < MAX_DEPTH)) {
+					temp = temp.get_parent();
+					continue;
+				}
+				temp.get_TS().add_winn(WIN_SCORE * depthscale);
 			}
 			temp = temp.get_parent();
 		}
@@ -115,6 +122,7 @@ public class MonteCarloTreeSearch {
 	 * This is a simulation of the randomly chosen child node.
 	 */
 	public int simulateRandomPlayout(Node n) throws Exception {
+		windepth =0;
 		Node temp = new Node(n); 
 		TreeState tempState = temp.get_TS(); 
 		int winStatus = tempState.getState().win_condition(); 
@@ -127,8 +135,11 @@ public class MonteCarloTreeSearch {
 //			temp.get_parent().get_TS().setwinn(Integer.MIN_VALUE); 
 //			return winStatus;
 //		}
+		
+		
 		// play random moves until a player wins
-		while(winStatus == -1) {
+		while(winStatus == -1 && windepth < MAX_DEPTH) {
+			windepth++;
 			//System.out.println("CP 4");
 			LinkedList<TreeState> children = tempState.childStates();
 			//System.out.println("\tsize of children states: " + children.size());

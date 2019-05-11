@@ -14,10 +14,10 @@ public class TreeState {
 	State state; // game state
 	int playeri; // current player of this node
 	int visitn; // number of simulations after this node
-	int winn; // number of node wins with after this node
+	double winn; // number of node wins with after this node
 	
 	
-	public TreeState(State st, int vn, int wn) {
+	public TreeState(State st, int vn, double wn) {
 		state = st;
 		playeri = state.get_current_player_int();
 		visitn = vn;
@@ -31,7 +31,7 @@ public class TreeState {
 		state = st;
 		playeri = state.get_current_player_int();
 		visitn = 0;
-		winn = 0;
+		winn = (double)0;
 	}
 
 	
@@ -44,7 +44,7 @@ public class TreeState {
 	public int getvisitn() {
 		return visitn;
 	}
-	public int getwinn() {
+	public double getwinn() {
 		return winn;
 	}
 	
@@ -148,7 +148,7 @@ public class TreeState {
 		visitn += 1; 
 	}
 	
-	public void add_winn(int n) {
+	public void add_winn(double n) {
 		winn += n; 
 	}
 }
