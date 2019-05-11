@@ -48,6 +48,16 @@ public class Landmark {
 					" is not a valid string representation of a card_type.");
 		}
 	}
+	public static Landmark copyOf(Landmark l) throws Exception {
+		Landmark temp = new Landmark(l.get_name(),
+				l.get_industry(),
+				l.get_cardType(),
+				l.get_constructionCost(),
+				l.get_effect(),
+				l.get_face()
+				);
+		return temp;
+	}
 	public industry str_to_industry(String s) throws Exception {
 		switch(s) {
 			case "Landmark": return industry.Landmark;
@@ -80,5 +90,14 @@ public class Landmark {
 	}
 	public String get_face() { 
 		return face.toString();
+	}
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+		Landmark l = (Landmark) o;
+		return this.name.equals(l.get_name());
 	}
 }

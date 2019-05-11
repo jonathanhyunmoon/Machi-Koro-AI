@@ -57,6 +57,17 @@ public class Establishment  {
 				" is not a valid string representation of a card_type.");
 		}
 	}
+	
+	public static Establishment copyOf(Establishment e) throws Exception {
+		Establishment temp = new Establishment(e.get_name(),
+				e.get_industry(),
+				e.get_cardType(),
+				e.get_constructionCost(),
+				e.get_activation_numbers(),
+				e.get_effect()
+				);
+		return temp;
+	}
 	public industry str_to_industry(String s) throws Exception {
 		switch(s) {
 		case "Primary": return industry.Primary;
@@ -84,5 +95,15 @@ public class Establishment  {
 	}
 	public Est_Effect get_effect() {
 		return effect;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+		Establishment e = (Establishment) o;
+		return this.name.equals(e.get_name());
 	}
 }

@@ -29,8 +29,27 @@ public class State {
 		current_player = cp;
 	}
 
-	public static State copyOf(State s) {
-		State temp = new State(s.players,s.bank,s.available_cards,s.landmark_cards,s.current_player);
+	public static State copyOf(State s) throws Exception {
+		LinkedList<Player> playerscpy = new LinkedList<Player>();
+		for (Player p : s.get_players()) {
+			Player cpy = Player.copyOf(p);
+			playerscpy.add(cpy);
+		}
+		
+		LinkedList<Establishment> assetscpy = new LinkedList<Establishment>();
+		for (Establishment e : s.get_available_cards()) {
+			Establishment cpy = Establishment.copyOf(e);
+			assetscpy.add(cpy);
+		}
+		
+		LinkedList<Landmark> landscpy = new LinkedList<Landmark>();
+		for (Landmark l : s.get_landmark_cards()) {
+			Landmark cpy = Landmark.copyOf(l);
+			landscpy.add(cpy);
+		}
+		
+		State temp = new State(playerscpy,s.bank,assetscpy,landscpy,s.current_player);
+		
 		return temp;
 	}
 
@@ -65,11 +84,21 @@ public class State {
 		}
 		return null;
 	}
+	public Player get_playeri(int i) {
+		for (Player p: players) {
+			if (p.get_order() == i)
+				return p;
+		}
+		return null;
+	}
+	public void sub_bank(int i) {
+		bank -= i;
+	}
 
 	public void purchase_establishment (Establishment est) {
 		available_cards.remove(est);
 		int const_cost = est.get_constructionCost();
-		bank = bank + const_cost;
+		bank += const_cost;
 
 		// updates current player's assets after buying establishment est
 		Player new_player = get_current_player();
@@ -80,13 +109,13 @@ public class State {
 
 	public void purchase_landmark (Landmark lm) {
 		int const_cost = lm.get_constructionCost();
-		bank = bank + const_cost;
+		bank += const_cost;
 
 		// updates current player's assets after buying landmark lm
 		Player new_player = get_current_player();
 		new_player.purchase_landmarks(lm);
 		remove_current_player();
-		players.add( new_player);
+		players.add(new_player);
 	}
 
 	public void remove_current_player() {
@@ -134,7 +163,7 @@ public class State {
 	 * nextTurn(s) returns a copy of a s with the current_player field of the
 	 * state updated to be the next player
 	 */
-	public static State nextTurn(State s) {
+	public static State nextTurn(State s) throws Exception {
 		State temp = copyOf(s);
 		temp.current_player++;
 		temp.current_player %= (temp.get_players().size());
@@ -144,13 +173,6 @@ public class State {
 	/*
 	 * Updates the current player's cash with an addition of the total sum of
 	 * the expected values of the cards it currently holds
-	 * 
-	 * TODO: implement the following:
-	 * Add: expval of primary always, expval of secondary if p == currp,
-	 * 		expval of restaurant if p != currp, expval of purple if p == currp
-	 * Subtract: total expval of restaurants of other players if p == currp
-	 * 
-	 * Account for bank accordingly
 	 * 
 	 * pitfalls:
 	 *  - assumes stealing-type cards always obtain full value
@@ -162,44 +184,43 @@ public class State {
 	 *  	banks of players. however, the banks of the children use this
 	 *  	estimate.
 	 */
-	public static void update_pcash(State st, Player p) {
+	public int update_pcash(Player p) throws Exception {
 		double sum = (double) 0; 
-		double subtract = (double) 0;
-		Player currp = st.get_current_player();
-		
-		
+		double currsteal = (double) 0;
 		
 		for (Establishment e: p.get_assets()) {
-			if (e.get_cardType() == "Restaurant") { 
-				subtract += Heuristics.curr_playEstVal(st, p, e);
+			if (e.get_cardType().equals("Restaurant")) { 
+				currsteal += Heuristics.curr_playEstVal(this, p, e);
 			}
-			sum += Heuristics.curr_playEstVal(st, p, e);
+			sum += Heuristics.curr_playEstVal(this, p, e);
 		}
+		
+		bank -= (int)(sum-currsteal + 0.5);
+		
 		for (Landmark l: p.get_landmarks()) {
-			sum+= Heuristics.curr_playLandmark(st, p, l); 
+			sum += Heuristics.curr_playLandmark(this, p, l); 
 		}
 
-		p.add_cash((int)sum);
-		LinkedList <Player> players = st.get_players(); 
-		for (Player p1 : players) {
-			if (p1 != p) p1.subtract_cash((int) subtract); 
-		}
+		p.add_cash((int)(sum+0.5));
+		
 
+		return (int)(currsteal+0.5);
 	}
 
 	/*
-	 * Updates State s s.t. each player's cash is increased by their expected
+	 * Updates State s.t. each player's cash is increased by their expected
 	 * values of the cards it currently holds. 
 	 */
-	public static void update_scash(State s) {
-		LinkedList <Player> players = s.get_players();
+	public void update_scash() throws Exception {
+		int currsteal = 0;
 		for (Player p: players) {
-			update_pcash(s, p);
+			currsteal += update_pcash(p);
 		}
+		get_current_player().subtract_cash(currsteal);
+		
 	}
 
 	/*
-	 * 
 	 * Returns order number of player that wins if State s is a winning condition state. 
 	 * The winning condition state is defined to be a state where at least one
 	 * player has activated all of its landmark cards.
@@ -213,7 +234,7 @@ public class State {
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
 			LinkedList <Landmark> all_landmarks = get_landmark_cards();
 			for (Landmark l: all_landmarks) {
-				if (landmarks.indexOf(l) == -1) ret = false; 
+				if (!landmarks.contains(l)) ret = false; 
 			}
 			if (ret) return p.get_order(); 
 		}
