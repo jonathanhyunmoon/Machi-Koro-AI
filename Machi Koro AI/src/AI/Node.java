@@ -59,7 +59,10 @@ public class Node {
     				+ "/" + c.get_TS().getwinn()
     				+ " - " + AIhelpers.stateDiff(ts.getState(), c.get_TS().getState()));
     	}
-    	return Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
+    	Node chosen =  Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
+    	System.out.println("****CHOSEN: " 
+    	    	+ AIhelpers.stateDiff(ts.getState(), chosen.get_TS().getState()));
+    	return chosen;
     }
 }
 

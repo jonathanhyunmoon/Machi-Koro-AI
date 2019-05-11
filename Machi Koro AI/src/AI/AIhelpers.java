@@ -266,7 +266,14 @@ public class AIhelpers {
 		return false;
 	}
 	
-	
+	public static boolean p_has_e(Player p, Establishment e) {
+		for (Establishment est: p.get_assets()) {
+			if(est.get_name().equals(e.get_name())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/* returns a LinkedList of establishments not owned and purchasable
 	 * by player p
@@ -276,6 +283,9 @@ public class AIhelpers {
 		LinkedList<Establishment> ret = new LinkedList<Establishment> (); 
 		LinkedList<Establishment> allest = st.get_available_cards(); 
 		for (Establishment e: allest) {
+			if(e.get_industry()== "Major" && p_has_e(p,e)) {
+				continue;
+			}
 			if ((double)e.get_constructionCost() <= p.get_fcash()) ret.add(e);
 		}
 		

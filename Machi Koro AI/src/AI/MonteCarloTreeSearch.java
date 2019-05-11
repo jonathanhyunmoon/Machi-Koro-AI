@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final double WIN_SCORE = 100; 
+	static final double WIN_SCORE = 30; 
 	private final int MAX_DEPTH = 50;
 	private int client_player; // the player the agent will decide for
 	private int windepth;
@@ -17,9 +17,10 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 20;
+		long runtime = 300;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
+		
 		
 		while((current_t - start_t) < (runtime * 1000)) {
 			Node potential = potentialNode(rootNode);
@@ -36,6 +37,14 @@ public class MonteCarloTreeSearch {
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
+			System.out.println("=============================================");
+			for (Node c : rootNode.get_children()) {
+	    		System.out.println("visits/wins: " + c.get_TS().getvisitn()
+	    				+ "/" + c.get_TS().getwinn());
+	    	}
+		}
+		for (Node c : rootNode.get_children()) {
+			System.out.println(AIhelpers.stateDiff(c.get_TS().getState(),rootNode.get_TS().getState()));
 		}
 		Node winner = rootNode.getMaxChild();
 		tree.setRoot(winner);
@@ -78,17 +87,18 @@ public class MonteCarloTreeSearch {
 	public void backPropogation (Node n, int player) {
 		Node temp = n;
 		double depthscale = (double) 1 / windepth;
+		boolean iscurr = (temp.get_TS().getState().get_current_player_int() == player);
 		
 		while (temp != null) {
 			temp.get_TS().increment_visitn(); 
-			if (temp.get_TS().getPlayeri() == player) {
+			if (iscurr) {
 				if (!(windepth < MAX_DEPTH)) {
 					temp = temp.get_parent();
 					continue;
 				}
 				temp.get_TS().add_winn(WIN_SCORE * depthscale);
-				System.out.println("depth is: " + windepth);
-				System.out.println("*****WINSCORE IS: " + WIN_SCORE * depthscale);
+//				System.out.println("depth is: " + windepth);
+//				System.out.println("*****WINSCORE IS: " + WIN_SCORE * depthscale);
 			}
 			temp = temp.get_parent();
 		}
@@ -98,6 +108,7 @@ public class MonteCarloTreeSearch {
 		Node n  = root_node;
 		while(n.get_children().size() != 0) {
 			n = UCT.best_UCT(n);
+			System.out.println("Best node");
 		}
 		return n;
 	}
