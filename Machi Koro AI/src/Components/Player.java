@@ -58,6 +58,16 @@ public class Player {
 		return temp;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+		Player p = (Player) o;
+		return this.order == p.get_order();
+	}
+	
 	public String get_id() {
 		return id;
 	}
@@ -101,23 +111,21 @@ public class Player {
 	public int num_card(String cardname) {
 		int sum = 0;
 		for (Establishment e : assets) {
-			if (e.get_name() == cardname) sum++;
+			if (e.get_name().equals(cardname)) sum++;
 		}
 		return sum;
 	}
 
 	public boolean has_TrainSt() {
 		for (Landmark l : landmarks) {
-			String name = l.get_name();
-			if (name == "Train Station") return true;
+			if (l.get_name().equals("Train Station")) return true;
 		}
 		return false; 
 	}
 
 	public boolean has_Harbor() {
 		for (Landmark l: landmarks) {
-			String name = l.get_name();
-			if (name == "Harbor") return true;
+			if (l.get_name().equals("Harbor")) return true;
 		}
 		return false;
 	}
@@ -125,21 +133,21 @@ public class Player {
 	public int num_type(String type) {
 		int sum = 0;
 		for (Establishment e : assets) {
-			if (e.get_cardType() == type) sum++;
+			if (e.get_cardType().equals(type)) sum++;
 		}
 		return sum; 
 	}
 
 	public int num_cup_bread() {
-		return num_type("Cup") + num_type ("Bread");
+		return num_type("Cup") + num_type("Bread");
 	}
 	
 	public void add_cash (int c) {
-		this.cash = cash + c;
+		this.cash += c;
 	}
 	
 	public void subtract_cash (int c) {
-		this.cash = cash - c;
+		this.cash -= c;
 	}
 	
 }

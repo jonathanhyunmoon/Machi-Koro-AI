@@ -5,7 +5,12 @@ import AI.*;
 
 public class Main {
 	public static void main(String [] args) throws Exception {
-		String filename = "C:/Users/hyun0/Documents/vmshared/ai_help";
+		String jon = "C:/Users/hyun0/Documents/vmshared/ai_help";
+		String jason = "/Users/JasonJung/OneDrive/Sophomore/sem\ 2/ai/Machi-Koro-AI/ai_help";
+		String winice;
+		
+		// change this after pulling
+		String filename = jason;
 		
 		Parse_JSON parser = new Parse_JSON();
 		State st; 

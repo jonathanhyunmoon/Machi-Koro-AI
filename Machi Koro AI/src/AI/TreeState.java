@@ -67,7 +67,7 @@ public class TreeState {
 	 * Each state will be in phase 3.
 	 */
 	public LinkedList<TreeState> childStates() throws Exception {
-		// TODO: if this is a state already won, make sure no children returned
+		// if this is a state already won, make sure no children returned
 		if (state.win_condition() != -1) return new LinkedList<TreeState>();
 		
 		Player currplayer = state.get_current_player();
@@ -80,11 +80,11 @@ public class TreeState {
 		estops = AIhelpers.uniqueEst(estops);
 		
 //		System.out.println(state.get_current_player().get_id() + " has " + state.get_current_player().get_cash() + " coins.");
-//		System.out.println("\t Establishments purchaseable \n");
+//		System.out.println("\t Establishments purchasable \n");
 //		for (Establishment e : estops) {
 //			System.out.println("\t>"+ e.get_name() + "\t:\t" + e.get_constructionCost());
 //		}
-//		System.out.println("\t Landmarks purchaseable \n");
+//		System.out.println("\t Landmarks purchasable \n");
 //		for (Landmark l : landops) {
 //			System.out.println("\t>"+ l.get_name() + "\t:\t" + l.get_constructionCost());
 //		}
@@ -93,20 +93,17 @@ public class TreeState {
 		children.addAll(childrenE);
 		
 		State temp = State.copyOf(state);
-		children.addFirst(temp);
+		children.add(temp);
 		
 		LinkedList<State> children2 = new LinkedList <State> ();
 		// change the current player for each state
 		for (State s : children) children2.add(State.nextTurn(s));
 		
 		
-		
-		// change the players' banks
-		for (State s: children2) State.update_scash(s);
-		
-		
+		// change the players' banks, convert to treestate
 		LinkedList<TreeState> childTS = new LinkedList<TreeState>();
 		for(State s: children2) {
+			s.update_scash();
 			childTS.add(new TreeState(s));
 		}
 		
@@ -114,10 +111,10 @@ public class TreeState {
 	}
 	
 	public void increment_visitn() {
-		visitn = getvisitn() + 1; 
+		visitn += 1; 
 	}
 	
 	public void add_winn(int n) {
-		winn = getwinn() + n; 
+		winn += n; 
 	}
 }
