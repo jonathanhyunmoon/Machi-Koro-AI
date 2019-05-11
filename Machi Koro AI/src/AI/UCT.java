@@ -11,7 +11,7 @@ public class UCT {
 	public static double UCT_value(int t, double w, int n,Node parent, Node child) {
 		if(n == 0) return Integer.MAX_VALUE;
 		
-		double landbuff = Integer.MAX_VALUE;
+		double landbuff = 1.2;
 		int parentlands = parent.get_TS().getState().get_landmark_cards().size();
 		int childlands = child.get_TS().getState().get_landmark_cards().size();
 		if (!(parentlands < childlands)) landbuff = 1;
