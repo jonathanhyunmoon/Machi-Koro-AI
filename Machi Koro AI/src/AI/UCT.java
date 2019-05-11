@@ -11,7 +11,7 @@ public class UCT {
 	public static double UCT_value(int t, double w, int n,Node parent, Node child) {
 		if(n == 0) return Integer.MAX_VALUE;
 		
-		double landbuff = 1.2;
+		double landbuff = Integer.MAX_VALUE;
 		int parentlands = parent.get_TS().getState().get_landmark_cards().size();
 		int childlands = child.get_TS().getState().get_landmark_cards().size();
 		if (!(parentlands < childlands)) landbuff = 1;
@@ -19,7 +19,7 @@ public class UCT {
 		double success_rate = ((double) w)/((double) n);
 		double c = Math.sqrt(2); // exploration parameter
 		double exploration_factor = c* Math.sqrt(Math.log(t) / (double) n);
-		
+		System.out.println("UCT VALUE IS: " + success_rate + exploration_factor);
 		return landbuff * (success_rate + exploration_factor);
 	}
 	

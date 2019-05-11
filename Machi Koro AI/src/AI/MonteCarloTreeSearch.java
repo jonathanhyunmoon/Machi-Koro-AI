@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final double WIN_SCORE = 1; 
+	static final double WIN_SCORE = 100; 
 	private final int MAX_DEPTH = 50;
 	private int client_player; // the player the agent will decide for
 	private int windepth;
@@ -33,7 +33,6 @@ public class MonteCarloTreeSearch {
 			}
 			
 			int result = simulateRandomPlayout(explore);
-			
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
@@ -88,6 +87,8 @@ public class MonteCarloTreeSearch {
 					continue;
 				}
 				temp.get_TS().add_winn(WIN_SCORE * depthscale);
+				System.out.println("depth is: " + windepth);
+				System.out.println("*****WINSCORE IS: " + WIN_SCORE * depthscale);
 			}
 			temp = temp.get_parent();
 		}
