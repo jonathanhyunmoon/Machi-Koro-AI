@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final double WIN_SCORE = 30; 
-	private final int MAX_DEPTH = 200;
+	static final double WIN_SCORE = 35; 
+	private final int MAX_DEPTH = 1000;
 	private int client_player; // the player the agent will decide for
 	private int windepth;
 	public State findNextMove(State st) throws Exception {
@@ -17,7 +17,7 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 120;
+		long runtime = 150;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		
@@ -72,7 +72,7 @@ public class MonteCarloTreeSearch {
 	 * node.
 	 * This is the selection phase.
 	 */
-	private Node potentialNode(Node root) {
+	private Node potentialNode(Node root) throws Exception {
 	    Node node = root;
 	    while (node.get_children().size() != 0) {
 	        node = UCT.best_UCT(node);
@@ -96,15 +96,16 @@ public class MonteCarloTreeSearch {
 					temp = temp.get_parent();
 					continue;
 				}
-				temp.get_TS().add_winn(WIN_SCORE * depthscale);
-//				System.out.println("depth is: " + windepth);
-//				System.out.println("*****WINSCORE IS: " + WIN_SCORE * depthscale);
+				temp.get_TS().add_winn(WIN_SCORE / (double)windepth++);
+
 			}
 			temp = temp.get_parent();
 		}
+		System.out.println("windepth: " + windepth);
+		System.out.println("*****WINSCORE IS: " + WIN_SCORE / windepth);
 	}
 	
-	private Node best_node(Node root_node) {
+	private Node best_node(Node root_node) throws Exception {
 		Node n  = root_node;
 		while(n.get_children().size() != 0) {
 			n = UCT.best_UCT(n);
@@ -133,7 +134,7 @@ public class MonteCarloTreeSearch {
 	 * This is a simulation of the randomly chosen child node.
 	 */
 	public int simulateRandomPlayout(Node n) throws Exception {
-		windepth =0;
+		windepth = 0;
 		Node temp = new Node(n); 
 		TreeState tempState = temp.get_TS(); 
 		int winStatus = tempState.getState().win_condition(); 

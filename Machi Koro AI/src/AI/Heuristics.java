@@ -423,8 +423,8 @@ public class Heuristics {
 			return 0.1;
 		case "Harbor":
 			return (double)2/6;
-		case "Train Station":
-			return 4;
+//		case "Train Station":
+//			return 4;
 //		case "Shopping Mall":
 //			return 0;
 //		case "Amusement Park":
@@ -432,7 +432,7 @@ public class Heuristics {
 //		case "Radio Tower":
 //			return (double)22/6;
 		case "Airport":
-			return 30;
+			return 10;
 		default: return 0;
 		}
 	}
@@ -441,8 +441,9 @@ public class Heuristics {
 	 * Returns the expected value of establishment e for player p in state s.s
 	 */
 	public static double curr_playEstVal(State s, Player p, Establishment e) throws Exception {
+		double trainfq = 0.8;
 		if (p.has_TrainSt()) {
-			return (curr_playoneD(s,p,e) + curr_playTwoD(s, p, e))/(double)2; 
+			return (1-trainfq)*curr_playoneD(s,p,e) + trainfq*curr_playTwoD(s, p, e); 
 		}
 		return curr_playoneD(s,p,e);
 	}

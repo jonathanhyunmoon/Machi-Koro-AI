@@ -252,23 +252,30 @@ public class State {
 	 */
 	public int win_condition(){
 		LinkedList <Player> players = get_players(); 
-		int winner = -1; 
+		Player currp = get_current_player();
+		int currlandsn = currp.get_landmarks().size();
+		boolean one_left = landmark_cards.size()-currlandsn==1;
+
+
+		boolean ret;
+		
 		for (Player p: players) {
-			boolean ret = true;
+			ret = true;
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
-			LinkedList <Landmark> all_landmarks = get_landmark_cards();
-			boolean one_left = all_landmarks.size()-landmarks.size()==1;
-			for (Landmark l: all_landmarks) {
-				if (one_left && !landmarks.contains(l) && (int)p.get_fcash()>= l.get_constructionCost()) {
-					System.out.println("HELLO");
-					return p.get_order();
+			
+			for (Landmark l: landmark_cards) {
+				if (one_left && (int)currp.get_fcash()>= l.get_constructionCost()) {
+					return currp.get_order();
 				}
-				if (!landmarks.contains(l)) ret = false;
+				if (!landmarks.contains(l)) {
+					ret = false;
+					break;
+				}
 			}
 			if (ret) return p.get_order(); 
 			
 		}
-		return winner; 
+		return -1; 
 	}
 	
 	public boolean win_condition_2 () {

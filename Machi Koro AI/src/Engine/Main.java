@@ -11,7 +11,7 @@ public class Main {
 		String win;
 		
 		// change this after pulling
-		String filename = jon2;
+		String filename = jas;
 		
 		Parse_JSON parser = new Parse_JSON();
 		State st; 
