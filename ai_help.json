@@ -5,7 +5,7 @@
       "id": "Player 3",
       "number of dice": 1,
       "dice rolls": [ -1 ],
-      "cash": 101,
+      "cash": 4,
       "assets": [
         {
           "name": "Bakery",
@@ -41,7 +41,7 @@
       "id": "Player 1",
       "number of dice": 1,
       "dice rolls": [ 1 ],
-      "cash": 101,
+      "cash": 4,
       "assets": [
         {
           "name": "Bakery",
@@ -77,7 +77,7 @@
       "id": "Player 2",
       "number of dice": 1,
       "dice rolls": [ -1 ],
-      "cash": 101,
+      "cash": 4,
       "assets": [
         {
           "name": "Bakery",

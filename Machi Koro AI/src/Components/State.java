@@ -247,10 +247,16 @@ public class State {
 			boolean ret = true;
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
 			LinkedList <Landmark> all_landmarks = get_landmark_cards();
+			boolean one_left = all_landmarks.size()-landmarks.size()==1;
 			for (Landmark l: all_landmarks) {
-				if (!landmarks.contains(l)) ret = false; 
+				if (one_left && !landmarks.contains(l) && (int)p.get_fcash()>= l.get_constructionCost()) {
+					System.out.println("HELLO");
+					return p.get_order();
+				}
+				if (!landmarks.contains(l)) ret = false;
 			}
 			if (ret) return p.get_order(); 
+			
 		}
 		return winner; 
 	}

@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import Components.*;
 public class MonteCarloTreeSearch {
 	static final double WIN_SCORE = 30; 
-	private final int MAX_DEPTH = 50;
+	private final int MAX_DEPTH = 200;
 	private int client_player; // the player the agent will decide for
 	private int windepth;
 	public State findNextMove(State st) throws Exception {
@@ -17,7 +17,7 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 300;
+		long runtime = 120;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		
@@ -108,7 +108,6 @@ public class MonteCarloTreeSearch {
 		Node n  = root_node;
 		while(n.get_children().size() != 0) {
 			n = UCT.best_UCT(n);
-			System.out.println("Best node");
 		}
 		return n;
 	}
