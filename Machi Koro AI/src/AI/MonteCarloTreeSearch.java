@@ -23,17 +23,23 @@ public class MonteCarloTreeSearch {
 		
 		
 		while((current_t - start_t) < (runtime * 1000)) {
+			// 1. Selection
 			Node potential = potentialNode(rootNode);
+			
+			// 2. Expansion
 			if(potential.get_TS().getState().win_condition() == -1) {
 				expand(potential);
 			}
 			
+			// 3. Simulate
 			Node explore = potential;
 			if(potential.get_children().size() > 0) {
 				explore = potential.getRandomChild(); // can be improved
 			}
 			
 			int result = simulateRandomPlayout(explore);
+			
+			// 4. Backpropagation
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
@@ -87,22 +93,24 @@ public class MonteCarloTreeSearch {
 	public void backPropogation (Node n, int player) {
 		Node temp = n;
 		double depthscale = (double) 1 / windepth;
-		boolean iscurr = (temp.get_TS().getState().get_current_player_int() == player);
+		int num_p = n.get_TS().getState().get_players().size();
+		boolean isp = ((temp.get_TS().getState().get_current_player_int() - 1) % num_p == player);
 		
 		while (temp != null) {
-			temp.get_TS().increment_visitn(); 
-			if (iscurr) {
+			isp = ((temp.get_TS().getState().get_current_player_int() - 1) % num_p == player);
+			temp.get_TS().increment_visitn();
+//			System.out.println("is curr: " + (isp ? "True" : "False"));
+			if (isp) {
 				if (!(windepth < MAX_DEPTH)) {
 					temp = temp.get_parent();
 					continue;
 				}
 				temp.get_TS().add_winn(WIN_SCORE / (double)windepth++);
-
 			}
 			temp = temp.get_parent();
 		}
-		System.out.println("windepth: " + windepth);
-		System.out.println("*****WINSCORE IS: " + WIN_SCORE / windepth);
+//		System.out.println("windepth: " + windepth);
+//		System.out.println("*****WINSCORE IS: " + WIN_SCORE / windepth);
 	}
 	
 	private Node best_node(Node root_node) throws Exception {

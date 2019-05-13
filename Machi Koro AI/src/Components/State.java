@@ -241,7 +241,6 @@ public class State {
 			currsteal += update_pcash(p);
 		}
 		get_current_player().subtract_cash(currsteal);
-		
 	}
 
 	/*

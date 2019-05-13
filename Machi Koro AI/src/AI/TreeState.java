@@ -14,7 +14,7 @@ public class TreeState {
 	State state; // game state
 	int playeri; // current player of this node
 	int visitn; // number of simulations after this node
-	double winn; // number of node wins with after this node
+	double winn; // (current player - 1) % totalplayers after this node
 	
 	
 	public TreeState(State st, int vn, double wn) {
