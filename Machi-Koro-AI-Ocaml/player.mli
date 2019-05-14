@@ -61,3 +61,5 @@ val to_string : t -> string
 (** [dice_to_roll player int] gives [player], but with its num_dice field
     replaced with [int]*)
 val dice_to_roll : t ->int ->t
+
+val custom_rolled_player : t -> (int list) -> t

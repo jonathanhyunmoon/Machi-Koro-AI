@@ -137,6 +137,16 @@ let get_lst_of_matching_industry_cards (player:t)
       else helper acc t in 
   helper [] cards
 
+let custom_rolled_player player (rolls:int list) = 
+  {
+    id = player.id;
+    num_dice = player.num_dice;
+    dice_rolls = rolls;
+    cash = player.cash;
+    assets = player.assets;
+    landmarks = player.landmarks;
+    order = player.order
+  }
 
 let to_string player = 
   let rec cardnamesEst acc (lst:Establishment.card list) = 
