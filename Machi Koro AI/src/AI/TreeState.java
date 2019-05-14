@@ -80,7 +80,8 @@ public class TreeState {
 
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
 
-		if (children.size() == 1) {
+		if (one_left && children.size() == 1) {
+			
 			LinkedList<State> children2 = new LinkedList <State> ();
 			// change the current player for each state
 			for (State s : children) children2.add(State.nextTurn(s));
