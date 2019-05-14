@@ -1,1 +1,1 @@
-main.ml: ANSITerminal Basiccards Bisect Card_maker Establishment Landmark List Load_from_json Parse_json Player Save_to_json State String Yojson
+main.ml: ANSITerminal Basiccards Bisect Card_maker Char Establishment Landmark List Load_from_json Parse_json Player Save_to_json State String Yojson

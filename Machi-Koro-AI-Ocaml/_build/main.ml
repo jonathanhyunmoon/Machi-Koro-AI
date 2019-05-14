@@ -716,8 +716,6 @@ and phase_3_AI (st: State.t): State.t =
   let filename = "ai_help" in 
   let address = "/media/sf_vmshared/ai_help.json" in
   let _ = Save_to_json.save_to_file_AI st_json address in
-  let _ = if Load_from_json.is_blocked(address)
-    then print_string "hi" else print_string "bye" in 
   let _ =  print_endline ("fetching ai help") in
   let rec await_update()= 
     if
@@ -818,6 +816,28 @@ let add_2_roll b =
     if (yes_or_no ()) = 1 then true
     else false
   else false
+
+let match_dice_input (str: string) (dice: int) : int list =
+  try 
+    let cleaned = str |>clean in 
+    let len = cleaned |> String.length in
+    let in_range n = n>0 &&n<7 in
+    if len = 1 && dice = 1 && (cleaned |> int_of_string |> in_range) 
+    then (cleaned  |> int_of_string)::[] 
+    else if dice = 1 && len != 1 then -1::[]
+    else if dice = 1 && len = 1 && not (cleaned |> int_of_string |> in_range)
+    then -1 :: [] 
+    else if len = 1 && not (dice =1) then -1 ::[]
+    else if not (clean(String.sub (cleaned) 1 (len-2)) = "" )
+    then -1::[]
+    else if in_range (int_of_string(Char.escaped(cleaned.[0]))) &&
+            in_range  (int_of_string(Char.escaped(cleaned.[len-1]))) 
+    then
+      (int_of_string(Char.escaped(cleaned.[0])))::
+      (int_of_string(Char.escaped(cleaned.[len-1])))::[]
+    else -1::[]
+  with 
+  | Failure _ -> let _ = print_string "failed" in -1::[]
 (** [await_R add state current_player tc] is the helper function in charge
     of rolling the die and activating the associated landmark effects in the
     die rolling stage *)
@@ -844,6 +864,31 @@ let rec await_R add (state : State.t) current_player tc =
     else
       rolled_state
   | "quit" -> exit 0
+  | str -> let allowed_d = current_player.num_dice in 
+    let parsed = match_dice_input str allowed_d in
+    if List.mem (-1) parsed
+    then let _ = display_phase_1_msg_3 tc in  await_R add state current_player tc
+    else let updated_player = Player.custom_rolled_player current_player parsed in
+      let rolled_state = 
+        State.replace_player_list   
+          (State.replace_player updated_player state.players) state in
+      let roll_num = Player.calc_roll updated_player in 
+      let _ = display_phase_1_msg_2 tc (roll_num) in
+      if roll_num >= 10  then
+        if ((add_2_roll add) = true) then
+          let rolled_state = 
+            State.replace_player_list   
+              (State.replace_player 
+                 (State.add2_to_dice updated_player) state.players) 
+              state in
+          let roll_num = 
+            Player.calc_roll (State.get_current_player rolled_state) in 
+          let _ = display_phase_1_msg_2 tc (roll_num) in
+          rolled_state
+        else rolled_state
+      else
+        rolled_state
+
   | _ -> display_phase_1_msg_3 tc; await_R add state current_player tc
 (* phase_1 is where the current player's fields dice_rolls, which is an int
    list, is updated. It then calculates the sum of the rolls using 
