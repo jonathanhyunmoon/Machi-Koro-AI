@@ -5,10 +5,14 @@ import java.util.LinkedList;
 
 import Components.*;
 public class MonteCarloTreeSearch {
-	static final double WIN_SCORE = 35; 
-	private final int MAX_DEPTH = 1000;
+	static final double WIN_SCORE = 70; // unused
+	private final int MAX_DEPTH = 500;
 	private int client_player; // the player the agent will decide for
 	private int windepth;
+	
+	private int depthtotal;
+	private int depthn;
+	
 	public State findNextMove(State st) throws Exception {
 		client_player = st.get_current_player().get_order(); // player the agent is deciding for
 		Tree tree = new Tree();
@@ -17,12 +21,12 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 30;
+		long runtime = 100;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		
-		
-		while((current_t - start_t) < (runtime * 1000)) {
+		while (rootTS.getvisitn() < 7500) {
+//		while((current_t - start_t) < (runtime * 1000)) {
 			// 1. Selection
 			Node potential = potentialNode(rootNode);
 			
@@ -49,12 +53,15 @@ public class MonteCarloTreeSearch {
 //	    				+ "/" + c.get_TS().getwinn());
 //	    	}
 		}
-		for (Node c : rootNode.get_children()) {
-			System.out.println(AIhelpers.stateDiff(c.get_TS().getState(),rootNode.get_TS().getState()));
-		}
 		Node winner = rootNode.getMaxChild();
 		tree.setRoot(winner);
+		
+		
 		System.out.println("depth:" + depth(rootNode));
+		System.out.println("runs: " + rootTS.getvisitn());
+		System.out.println("runtime: " + (current_t - start_t)/1000);
+		System.out.println("avg win depth: " + (double)depthtotal / (double)depthn);
+		
 		return winner.get_TS().getState();
 	}
 	
@@ -91,8 +98,10 @@ public class MonteCarloTreeSearch {
 	 * and winn if the node's player was the winner of the simulation, then traverse up.
 	 */
 	public void backPropogation (Node n, int player) {
+		depthtotal += windepth;
+		depthn++;
 		Node temp = n;
-		double depthscale = (double) 1 / windepth;
+		double avgdepth = depthtotal / depthn;
 		int num_p = n.get_TS().getState().get_players().size();
 		boolean isp = ((temp.get_TS().getState().get_current_player_int() - 1) % num_p == player);
 		
@@ -105,7 +114,7 @@ public class MonteCarloTreeSearch {
 					temp = temp.get_parent();
 					continue;
 				}
-				temp.get_TS().add_winn(WIN_SCORE / (double)windepth++);
+				temp.get_TS().add_winn(avgdepth / (double)windepth++);
 			}
 			temp = temp.get_parent();
 		}

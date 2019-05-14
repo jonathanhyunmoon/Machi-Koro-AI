@@ -54,17 +54,25 @@ public class Node {
     	return childArray.get(rand);
     }
     public Node getMaxChild() throws Exception {
+    	
     	for (Node c : childArray) {
     		System.out.println("visits/wins: " + c.get_TS().getvisitn()
     				+ "/" + c.get_TS().getwinn()
     				+ " - " + AIhelpers.stateDiff(ts.getState(), c.get_TS().getState()));
     	}
-    	if(childArray.size() == 0) {
-    		throw new Exception ("empty child Array.");
-    	}
+    	if(childArray.size() == 0) throw new Exception ("empty child Array.");
+    	
     	Node chosen =  Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
+    	LinkedList<Double> childvisits = new LinkedList<Double>();
+    	for (Node c : childArray) {
+    		if (c != chosen) childvisits.add(new Double(c.get_TS().getvisitn()));
+    	}
+
     	System.out.println("****CHOSEN: " 
-    	    	+ AIhelpers.stateDiff(ts.getState(), chosen.get_TS().getState()));
+    	    	+ AIhelpers.stateDiff(ts.getState(), chosen.get_TS().getState())
+    	    	+ " | " + Stats.ttest_onesample(chosen.get_TS().getvisitn(), childvisits)
+    	    	+ "//" + Stats.mean(childvisits)
+    			);
     	return chosen;
     }
 }
