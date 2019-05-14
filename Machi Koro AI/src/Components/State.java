@@ -131,6 +131,29 @@ public class State {
 		remove_current_player();
 		players.add(new_player);
 	}
+	
+	public void purchase_establishment_end (Establishment est) {
+		available_cards.remove(est);
+		int const_cost = est.get_constructionCost();
+		bank += const_cost;
+
+		// updates current player's assets after buying establishment est
+		Player new_player = get_current_player();
+		new_player.purchase_assets_end(est);
+		remove_current_player(); //maybe not necessary, since no new player made
+		players.add(new_player);
+	}
+
+	public void purchase_landmark_end (Landmark lm) {
+		int const_cost = lm.get_constructionCost();
+		bank += const_cost;
+
+		// updates current player's assets after buying landmark lm
+		Player new_player = get_current_player();
+		new_player.purchase_landmarks_end(lm);
+		remove_current_player();
+		players.add(new_player);
+	}
 
 	public void remove_current_player() {
 		for(int i = 0; i < players.size(); i++) {

@@ -105,7 +105,7 @@ public class AIhelpers {
 			if (passets.size() != 1) throw new Exception("passets not 1");
 			
 			Establishment decisione = passets.get(0);
-			origst.purchase_establishment(decisione);
+			origst.purchase_establishment_end(decisione);
 			return origst;
 		}
 		else if (!landeq) {
@@ -130,7 +130,7 @@ public class AIhelpers {
 			if (plands.size() != 1) throw new Exception("plands not 1");
 			
 			Landmark decisionl = plands.get(0);
-			origst.purchase_landmark(decisionl);
+			origst.purchase_landmark_end(decisionl);
 			return origst;
 		}
 		return origst;

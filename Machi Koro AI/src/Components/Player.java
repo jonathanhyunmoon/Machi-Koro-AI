@@ -117,6 +117,18 @@ public class Player {
 		double const_cost = lm.get_constructionCost();
 		fcash -= const_cost;
 	}
+	
+	public void purchase_assets_end (Establishment est) {
+		assets.add(est);
+		int const_cost = est.get_constructionCost();
+		cash -= const_cost; 
+	}
+
+	public void purchase_landmarks_end (Landmark lm) {
+		landmarks.add(lm);
+		int const_cost = lm.get_constructionCost();
+		cash -= const_cost;
+	}
 
 	/*
 	 * Returns the number of establishments cardname this player has.
