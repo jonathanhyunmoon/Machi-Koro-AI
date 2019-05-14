@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String [] args) throws Exception {
 		String jon = "C:/Users/hyun0/Documents/vmshared/ai_help";
 		String jon2 ="C:/Users/hyun0/Documents/Machi-Koro-AI/Machi Koro AI/jennaisave";
-		String jas = "/Users/JasonJung/OneDrive/Sophomore/sem_2/ai/Machi-Koro-AI/jennaisave1_p3";
+		String jas = "/Users/JasonJung/OneDrive/Sophomore/sem_2/ai/Machi-Koro-AI/jennaisave2_p3";
 		String win;
 		
 		// change this after pulling

@@ -21,12 +21,12 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 100;
+		long runtime = 30;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		
-		while (rootTS.getvisitn() < 7500) {
-//		while((current_t - start_t) < (runtime * 1000)) {
+//		while (rootTS.getvisitn() < 7500) {
+		while((current_t - start_t) < (runtime * 1000)) {
 			// 1. Selection
 			Node potential = potentialNode(rootNode);
 			

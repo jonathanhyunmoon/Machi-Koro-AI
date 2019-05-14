@@ -404,8 +404,8 @@ public class Heuristics {
 				income *= num_players;
 			case "Business Center": 
 				income = 8; 
-			case "TV Station": 
-				income += 0;
+//			case "TV Station": 
+//				income += 0;
 			case "Publisher": 
 				income = s.total_cup_bread() - p.num_cup_bread(); 
 			case "Tax Office": 
