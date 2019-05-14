@@ -71,16 +71,31 @@ public class TreeState {
 		if (state.win_condition() != -1) return new LinkedList<TreeState>();
 		
 		Player currplayer = state.get_current_player();
+		int currlandsn = currplayer.get_landmarks().size();
+		boolean one_left = state.get_landmark_cards().size()-currlandsn==1;
 		
 		// first, determine resulting states for all possible purchases made by current player
 		// cannot change currplayer here because that would buy for next player
 		LinkedList<Landmark> landops = AIhelpers.landmarksUnownedPurchasable(state,currplayer);
-		int landmax = 0;
-		for (Landmark l : landops) {
-			int lcost = l.get_constructionCost();
-			if (lcost > landmax) landmax = lcost;
-		}
+
 		LinkedList<State> children = AIhelpers.childStatesL(state, landops);
+
+		if (children.size() == 1) {
+			LinkedList<State> children2 = new LinkedList <State> ();
+			// change the current player for each state
+			for (State s : children) children2.add(State.nextTurn(s));
+			
+			
+			// change the players' banks, convert to treestate
+			LinkedList<TreeState> childTS = new LinkedList<TreeState>();
+			for(State s: children2) {
+				s.update_scash();
+				
+				childTS.add(new TreeState(s));
+			}
+			
+			return childTS;
+		}
 
 
 		// TODO: case where this would be wrong? is there ever a situation 

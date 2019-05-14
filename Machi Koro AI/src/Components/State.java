@@ -273,22 +273,13 @@ public class State {
 	 * If no player has won, function returns -1. 
 	 */
 	public int win_condition(){
-		LinkedList <Player> players = get_players(); 
-		Player currp = get_current_player();
-		int currlandsn = currp.get_landmarks().size();
-		boolean one_left = landmark_cards.size()-currlandsn==1;
-
-
 		boolean ret;
-		
+		LinkedList <Player> players = get_players(); 
 		for (Player p: players) {
 			ret = true;
 			LinkedList <Landmark> landmarks = p.get_landmarks(); 
 			
 			for (Landmark l: landmark_cards) {
-				if (one_left && (int)currp.get_fcash()>= l.get_constructionCost()) {
-					return currp.get_order();
-				}
 				if (!landmarks.contains(l)) {
 					ret = false;
 					break;
