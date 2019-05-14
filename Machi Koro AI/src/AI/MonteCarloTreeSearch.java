@@ -17,7 +17,7 @@ public class MonteCarloTreeSearch {
 		Node rootNode = new Node(rootTS);
 
 		// how long (in seconds) may MCTS run for?
-		long runtime = 150;
+		long runtime = 30;
 		long start_t = System.currentTimeMillis();
 		long current_t = System.currentTimeMillis();
 		
@@ -43,11 +43,11 @@ public class MonteCarloTreeSearch {
 			backPropogation(explore, result);
 			
 			current_t = System.currentTimeMillis();
-			System.out.println("=============================================");
-			for (Node c : rootNode.get_children()) {
-	    		System.out.println("visits/wins: " + c.get_TS().getvisitn()
-	    				+ "/" + c.get_TS().getwinn());
-	    	}
+//			System.out.println("=============================================");
+//			for (Node c : rootNode.get_children()) {
+//	    		System.out.println("visits/wins: " + c.get_TS().getvisitn()
+//	    				+ "/" + c.get_TS().getwinn());
+//	    	}
 		}
 		for (Node c : rootNode.get_children()) {
 			System.out.println(AIhelpers.stateDiff(c.get_TS().getState(),rootNode.get_TS().getState()));

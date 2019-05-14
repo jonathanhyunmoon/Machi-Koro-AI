@@ -6,12 +6,12 @@ import AI.*;
 public class Main {
 	public static void main(String [] args) throws Exception {
 		String jon = "C:/Users/hyun0/Documents/vmshared/ai_help";
-		String jon2 ="C:/Users/hyun0/Documents/Machi-Koro-AI/Machi Koro AI/ai_help";
+		String jon2 ="C:/Users/hyun0/Documents/Machi-Koro-AI/Machi Koro AI/jennaisave";
 		String jas = "/Users/JasonJung/OneDrive/Sophomore/sem_2/ai/Machi-Koro-AI/ai_help";
 		String win;
 		
 		// change this after pulling
-		String filename = jas;
+		String filename = jon;
 		
 		Parse_JSON parser = new Parse_JSON();
 		State st; 
@@ -19,6 +19,7 @@ public class Main {
 		MonteCarloTreeSearch mcts = new MonteCarloTreeSearch();
 		while (true) {
 			if(!parser.is_blocked(filename)) {
+				System.out.println("making a decision!");
 				st = parser.parse_state(filename);
 				State mctsmove = mcts.findNextMove(st);
 				State updated = AIhelpers.correctState(st, mctsmove);

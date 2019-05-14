@@ -59,6 +59,9 @@ public class Node {
     				+ "/" + c.get_TS().getwinn()
     				+ " - " + AIhelpers.stateDiff(ts.getState(), c.get_TS().getState()));
     	}
+    	if(childArray.size() == 0) {
+    		throw new Exception ("empty child Array.");
+    	}
     	Node chosen =  Collections.max(childArray,Comparator.comparing(n -> n.get_TS().getvisitn()));
     	System.out.println("****CHOSEN: " 
     	    	+ AIhelpers.stateDiff(ts.getState(), chosen.get_TS().getState()));
