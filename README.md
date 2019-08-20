@@ -2,6 +2,9 @@
 
 Authors: Winice Hui (wh394), Jonathan Hyun Moon (hm447), Jason Jung (jj634)
 
+Full report: https://drive.google.com/file/d/1JnnLGy_9YPCY-GfIutJCKLiYyqhjNZU7/view?usp=sharing
+
+
 I. Intended Projects and Results
 
 The aim of this project was to implement an AI program for the card game Machi Koro. Machi Koro is a city-building card
