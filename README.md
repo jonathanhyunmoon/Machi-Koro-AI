@@ -33,14 +33,17 @@ heuristic search algorithm played a major role in our AI decision process.
 III. Tweaks to MCTS
 
 1. Expected value function
+
 While implementing a game and its rules in its entirety (for the simulation phase) is what is typically done in Monte Carlo
 Tree Search, Machi Koro differs for a few reasons. Machi Koro is a non-deterministic game, and the first few rolls often have
 a compounding effect, allowing the player to continuously capitalize on their income advantage. Additionally, there exist a
 few moves beyond the purchase decision, such as those required by certain major establishments and landmarks. Having to
 consider these would significantly increase the branching factor and require longer simulations to acquire a similar level of
 confidence in a decision.
+
 The solution used is an expected value function, which returns the expected income per turn for any given Landmark or
 Establishment. These would be summed, added to the player, and subtracted from the bank to represent the income phase.
+
 Creating this was tricky, as most cards have some sort of nuance to them. Each card color is activated depending on whether
 the owner is the current player, and restaurants steal from the current player only. Cards activated on rolls of 7 or more
 are useless unless the Train Station has been constructed. There are many “multiplying” type cards, whose value depends on
@@ -53,6 +56,7 @@ doubles. While there were many more approximations made, these were a few highli
 classes “State” under package Components and “Heuristics” under package AI for the full implementation.
 
 2. Eliminating unrealistic playouts
+
 During the simulation phase, there were often unrealistic situations by the random playout. While exploring every possible
 option is a critical part of Monte Carlo Tree Search, it was decided that some situations would never occur in a real
 game. The anomalous situations arose when a player would own hundreds of coins and have only a couple remaining landmarks to
@@ -61,11 +65,13 @@ The child states function was altered such that if the player has more coins tha
 game (Airport: 30), meaning that they can buy any card, only return the purchasable landmarks.
 
 3. Scaled UCT values
+
 The max depth parameter serves to scale the propagated win value. Wins at nodes with high depths are valued less over wins at
 nodes with low depths; lower-depth wins are more likely to occur, and should be further explored by the UCT function. This
 was implemented by scaling the win_value by the reciprocal of the depth.
 
 4. Landmark buff
+
 Our UCT function was slightly modified with the addition of a landmark buff factor of 1.05, to account for the fact that
 landmarks are relatively better for purchase, as their construction make up a player’s win. This may seem somewhat arbitrary
 and against the ideals of a Monte Carlo simulation. In practice, however, this buff makes no difference when comparing a
