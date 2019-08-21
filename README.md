@@ -24,6 +24,7 @@ The user-interface and game-play implementation of Machi Koro were coded in OCam
 decision-making process in Java was added to function in conjunction with this. This is done using a single JSON file
 containing either the initial state given by OCaml or the modified state given by Java, as well as a control bit signifying
 which of these states the file is in.
+
 The agent’s main role in our game was to decide for a player which establishment or landmark card to purchase or whether to
 purchase no card at all. This decision-making process was approached using a Monte Carlo Tree Search (MCTS). We decided to
 use a MCTS for our decision-making process specifically because (1) Machi Koro has a large search space (2) the most optimal
